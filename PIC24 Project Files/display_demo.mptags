@@ -1,0 +1,246 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+BOOL	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	87;"	d	line:87
+BOOL	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	98;"	t	line:98
+BYTE	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	100;"	t	line:100
+BYTE	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	90;"	d	line:90
+BYTE_VAL	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	127;"	t	line:127
+CONSTANT::const	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	85;"	d	line:85
+DISABLE_INT::__asm__volatile("disi#0x3FFF")	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	68;"	d	line:68
+DISPLAY_A0::(state)(state?mPORTDSetBits(BI	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	186;"	d	line:186
+DISPLAY_A0::(state)LATEbits.LATE0=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	106;"	d	line:106
+DISPLAY_A0::(state)_LATD0=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	146;"	d	line:146
+DISPLAY_BITMAP_INVERT_PIXELS_OFF::0x0000	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	68;"	d	line:68
+DISPLAY_BITMAP_INVERT_PIXELS_ON::0x0080	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	69;"	d	line:69
+DISPLAY_BUS_ACCESS_DELAY::Nop;	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	116;"	d	line:116
+DISPLAY_BUS_ACCESS_DELAY::Nop;Nop;	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	155;"	d	line:155
+DISPLAY_BUS_ACCESS_DELAY::Nop;Nop;Nop;Nop;Nop;Nop;Nop;No	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	195;"	d	line:195
+DISPLAY_C::	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	15;"	d	line:15	file:
+DISPLAY_CS1::(state)(state?mPORTDSetBits(BI	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	187;"	d	line:187
+DISPLAY_CS1::(state)LATEbits.LATE1=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	107;"	d	line:107
+DISPLAY_CS1::(state)_LATD1=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	147;"	d	line:147
+DISPLAY_C_INIT	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	32;"	d	line:32
+DISPLAY_DATA_BUS_IP::(BYTE)(PORTE&0x00ff)	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	139;"	d	line:139
+DISPLAY_DATA_BUS_IP::(BYTE)(mPORTERead&0x000000ff)	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	179;"	d	line:179
+DISPLAY_DATA_BUS_IP::PORTD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	99;"	d	line:99
+DISPLAY_DATA_BUS_OP::(data)LATD=data	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	100;"	d	line:100
+DISPLAY_DATA_BUS_OP::(data)LATE&=0xff00;LATE|=(WORD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	140;"	d	line:140
+DISPLAY_DATA_BUS_OP::(data)mPORTESetBits((DWORD)dat	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	180;"	d	line:180
+DISPLAY_DATA_BUS_TRIS::(state)TRISD=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	101;"	d	line:101
+DISPLAY_DATA_BUS_TRIS::(state)TRISE&=0xff00;TRISE|=(W	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	141;"	d	line:141
+DISPLAY_DATA_BUS_TRIS::(state)mPORTESetPinsDigitalIn(	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	181;"	d	line:181
+DISPLAY_DEFAULT_CONTRAST::50	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	69;"	d	line:69
+DISPLAY_HEIGHT_PIXELS::64	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	67;"	d	line:67
+DISPLAY_MODEL_C::	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	29;"	d	line:29	file:
+DISPLAY_MODEL_C_INIT	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	50;"	d	line:50
+DISPLAY_RD::(state)(state?mPORTDSetBits(BI	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	185;"	d	line:185
+DISPLAY_RD::(state)LATCbits.LATC0=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	105;"	d	line:105
+DISPLAY_RD::(state)_LATD2=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	145;"	d	line:145
+DISPLAY_RESET::(state)(state?mPORTFSetBits(BI	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	188;"	d	line:188
+DISPLAY_RESET::(state)LATEbits.LATE2=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	108;"	d	line:108
+DISPLAY_RESET::(state)_LATF6=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	148;"	d	line:148
+DISPLAY_RW::(state)(state?mPORTDSetBits(BI	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	184;"	d	line:184
+DISPLAY_RW::(state)LATCbits.LATC1=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	104;"	d	line:104
+DISPLAY_RW::(state)_LATD3=state	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	144;"	d	line:144
+DISPLAY_STRING_CENTER_ALIGN::0x0400	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	82;"	d	line:82
+DISPLAY_STRING_CENTRE_ALIGN::0x0400	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	83;"	d	line:83
+DISPLAY_STRING_INVERT_PIXELS_OFF::0x0000	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	75;"	d	line:75
+DISPLAY_STRING_INVERT_PIXELS_ON::0x0080	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	76;"	d	line:76
+DISPLAY_STRING_LEFT_ALIGN::0x0000	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	81;"	d	line:81
+DISPLAY_STRING_MONOSPACE::0x0000	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	79;"	d	line:79
+DISPLAY_STRING_ON_X_AXIS::0x0000	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	77;"	d	line:77
+DISPLAY_STRING_ON_Y_AXIS::0x0100	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	78;"	d	line:78
+DISPLAY_STRING_PROPORTIONAL::0x0200	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	80;"	d	line:80
+DISPLAY_STRING_RIGHT_ALIGN::0x0800	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	84;"	d	line:84
+DISPLAY_STRING_SCROLL::0x1000	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	85;"	d	line:85
+DISPLAY_USING_MICROCHIP_C32_COMPILER	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	59;"	d	line:59
+DISPLAY_WIDTH_PIXELS::128	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	66;"	d	line:66
+DISPLAY_WIDTH_START_OFFSET::4	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	68;"	d	line:68
+DWORD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	108;"	t	line:108
+DWORD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	94;"	d	line:94
+DWORD_VAL	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	160;"	t	line:160
+ENABLE_INT::__asm__volatile("disi#0x0000")	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	67;"	d	line:67
+FALSE	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	89;"	d	line:89
+FALSE	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	98;"	e	line:98	enum:_BOOL
+GLOBAL_DATA_TYPE_INIT	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	83;"	d	line:83
+HILSB	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	151;"	m	line:151	struct:_DWORD_VAL::<anonymous>
+HIMSB	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	152;"	m	line:152	struct:_DWORD_VAL::<anonymous>
+INCLUDE_DISPLAY_BYTE_TEST_SEQUENCE_FUNCTION::	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	59;"	d	line:59
+INSTRUCTION_CLOCK_FREQUENCY::16000000	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	56;"	d	line:56
+INVERT_Y_AXIS_COORDINATES::	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	84;"	d	line:84
+LOLSB	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	149;"	m	line:149	struct:_DWORD_VAL::<anonymous>
+LOMSB	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	150;"	m	line:150	struct:_DWORD_VAL::<anonymous>
+LOWER_LSB::(a)((a).v[0])	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	161;"	d	line:161
+LOWER_MSB::(a)((a).v[1])	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	162;"	d	line:162
+LSB	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	135;"	m	line:135	struct:_WORD_VAL::<anonymous>
+LSB::(a)((a).v[0])	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	140;"	d	line:140
+LSW	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	156;"	m	line:156	struct:_DWORD_VAL::<anonymous>
+MAIN_C::	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	15;"	d	line:15	file:
+MAIN_C_INIT	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	20;"	d	line:20
+MSB	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	136;"	m	line:136	struct:_WORD_VAL::<anonymous>
+MSB::(a)((a).v[1])	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	141;"	d	line:141
+MSW	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	157;"	m	line:157	struct:_DWORD_VAL::<anonymous>
+ORIENTATION_IS_90::	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	79;"	d	line:79
+SIGNED_BYTE	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	102;"	t	line:102
+SIGNED_BYTE	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	91;"	d	line:91
+SIGNED_DWORD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	110;"	t	line:110
+SIGNED_DWORD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	95;"	d	line:95
+SIGNED_WORD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	106;"	t	line:106
+SIGNED_WORD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	93;"	d	line:93
+SWITCH_1_NEW_PRESS::switches_new&0x01	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	35;"	d	line:35
+SWITCH_1_PRESSED::switches_debounced&0x01	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	32;"	d	line:32
+SWITCH_2_NEW_PRESS::switches_new&0x02	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	36;"	d	line:36
+SWITCH_2_PRESSED::switches_debounced&0x02	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	33;"	d	line:33
+TRUE	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	88;"	d	line:88
+TRUE	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	98;"	e	line:98	enum:_BOOL
+UPPER_LSB::(a)((a).v[2])	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	163;"	d	line:163
+UPPER_MSB::(a)((a).v[3])	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	164;"	d	line:164
+Val	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	126;"	m	line:126	union:_BYTE_VAL
+WORD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	104;"	t	line:104
+WORD	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	92;"	d	line:92
+WORD_VAL	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	139;"	t	line:139
+_BOOL	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	98;"	g	line:98
+_BYTE_VAL	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	113;"	u	line:113
+_DWORD_VAL	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	144;"	u	line:144
+_T5Interrupt	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	796;"	f	line:796	signature:(void)
+_WORD_VAL	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	130;"	u	line:130
+b0	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	117;"	m	line:117	struct:_BYTE_VAL::<anonymous>
+b1	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	118;"	m	line:118	struct:_BYTE_VAL::<anonymous>
+b2	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	119;"	m	line:119	struct:_BYTE_VAL::<anonymous>
+b3	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	120;"	m	line:120	struct:_BYTE_VAL::<anonymous>
+b4	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	121;"	m	line:121	struct:_BYTE_VAL::<anonymous>
+b5	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	122;"	m	line:122	struct:_BYTE_VAL::<anonymous>
+b6	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	123;"	m	line:123	struct:_BYTE_VAL::<anonymous>
+b7	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	124;"	m	line:124	struct:_BYTE_VAL::<anonymous>
+b_temp	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	150;"	l	line:150
+b_temp1	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	151;"	l	line:151
+bitmap_memory_data	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	158;"	l	line:158
+bits	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	125;"	m	line:125	union:_BYTE_VAL
+byte	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	137;"	m	line:137	union:_WORD_VAL
+byte	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	153;"	m	line:153	union:_DWORD_VAL
+byte_mask	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	163;"	l	line:163
+byte_ordering_test_last_x_coord	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	1162;"	l	line:1162	file:
+byte_ordering_test_last_y_coord	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	1163;"	l	line:1163	file:
+contrast_10ms_timer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	93;"	v	line:93
+count	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	41;"	l	line:41
+display_auto_x_coordinate	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	152;"	v	line:152
+display_auto_y_coordinate	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	153;"	v	line:153
+display_bitmap	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	148;"	f	line:148	signature:(DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord)
+display_bitmap	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	110;"	p	line:110	signature:(DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord)
+display_bitmap	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	128;"	p	line:128	signature:(DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord)
+display_byte_ordering_test_sequence	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	1160;"	f	line:1160	signature:(BYTE flags)
+display_byte_ordering_test_sequence	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	116;"	p	line:116	signature:(BYTE flags)
+display_byte_ordering_test_sequence	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	134;"	p	line:134	signature:(BYTE flags)
+display_clear_screen	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	98;"	f	line:98	signature:(BYTE invert_pixels)
+display_clear_screen	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	109;"	p	line:109	signature:(BYTE invert_pixels)
+display_clear_screen	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	127;"	p	line:127	signature:(BYTE invert_pixels)
+display_const_string	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	881;"	f	line:881	signature:(DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord, CONSTANT BYTE *p_ascii_string)
+display_const_string	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	111;"	p	line:111	signature:(DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord, CONSTANT BYTE *p_ascii_string)
+display_const_string	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	129;"	p	line:129	signature:(DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord, CONSTANT BYTE *p_ascii_string)
+display_contrast_level	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	94;"	v	line:94
+display_copy_buffer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	268;"	v	line:268
+display_copy_buffer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	270;"	v	line:270
+display_delay_ms	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	39;"	f	line:39	signature:(BYTE delay_ms)
+display_delay_ms	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	106;"	p	line:106	signature:(BYTE delay_ms)
+display_delay_ms	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	124;"	p	line:124	signature:(BYTE delay_ms)
+display_initialise	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	63;"	f	line:63	signature:(void)
+display_initialise	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	107;"	p	line:107	signature:(void)
+display_initialise	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	125;"	p	line:125	signature:(void)
+display_model_initialise	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	47;"	f	line:47	signature:(void)
+display_model_initialise	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	230;"	p	line:230	signature:(void)
+display_model_initialise	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	239;"	p	line:239	signature:(void)
+display_model_set_contrast	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	103;"	f	line:103	signature:(BYTE contrast_value)
+display_model_set_contrast	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	231;"	p	line:231	signature:(BYTE contrast_value)
+display_model_set_contrast	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	240;"	p	line:240	signature:(BYTE contrast_value)
+display_scroll_1st_char_done_skip_pixels	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	163;"	v	line:163
+display_scroll_text_display_pixels_count	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	162;"	v	line:162
+display_scroll_text_skip_pixels_count	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	154;"	v	line:154
+display_scroll_text_start_pixel	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	161;"	v	line:161
+display_set_address	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	243;"	f	line:243	signature:(WORD x_coord, WORD y_coord_page)
+display_set_address	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	222;"	p	line:222	signature:(WORD x_coord, WORD y_coord_page)
+display_set_contrast	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	79;"	f	line:79	signature:(BYTE contrast_value)
+display_set_contrast	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	108;"	p	line:108	signature:(BYTE contrast_value)
+display_set_contrast	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	126;"	p	line:126	signature:(BYTE contrast_value)
+display_variable_string	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	1017;"	f	line:1017	signature:(DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord, BYTE *p_ascii_string)
+display_variable_string	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	112;"	p	line:112	signature:(DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord, BYTE *p_ascii_string)
+display_variable_string	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.h	130;"	p	line:130	signature:(DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord, BYTE *p_ascii_string)
+display_working_byte_value	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	123;"	l	line:123
+display_write_bitmap_byte	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	121;"	f	line:121	signature:(BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_coord, WORD y_byte_coord)
+display_write_bitmap_byte	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	232;"	p	line:232	signature:(BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_coord, WORD y_byte_coord)
+display_write_bitmap_byte	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	241;"	p	line:241	signature:(BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_coord, WORD y_byte_coord)
+display_write_command	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	312;"	f	line:312	signature:(BYTE data)
+display_write_command	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.h	223;"	p	line:223	signature:(BYTE data)
+doing_leading_blank_bar	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	1022;"	l	line:1022
+doing_leading_blank_bar	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	886;"	l	line:886
+general_use_100ms_timer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	105;"	v	line:105
+general_use_10ms_timer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	104;"	v	line:104
+graph_pixel_x	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	529;"	l	line:529	file:
+graph_pixel_y	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	530;"	l	line:530	file:
+hb_100ms_timer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	799;"	l	line:799	file:
+hb_10ms_timer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	798;"	l	line:798	file:
+hb_1sec_timer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	800;"	l	line:800	file:
+image_flags	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	157;"	l	line:157
+image_height	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	156;"	l	line:156
+image_width	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	155;"	l	line:155
+initialise	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	137;"	f	line:137	signature:(void)
+initialise	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	60;"	p	line:60	signature:(void)
+just_entered_new_mode	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	528;"	l	line:528
+line_number	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	101;"	l	line:101
+main	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	398;"	f	line:398	signature:(void)
+modifed_x_coord	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	245;"	l	line:245
+modifed_y_coord_page	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	246;"	l	line:246
+next_character	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	1020;"	l	line:1020
+next_character	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	884;"	l	line:884
+our_mode	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	527;"	l	line:527	file:
+p_ascii_string_copy	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	1021;"	l	line:1021
+p_ascii_string_copy	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	885;"	l	line:885
+p_local_ram_buffer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display-model.c	126;"	l	line:126
+page_number	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	100;"	l	line:100
+process_mode	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	525;"	f	line:525	signature:(void)
+process_mode	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	62;"	p	line:62	signature:(void)
+prop_width_ascii_first_used_column	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	168;"	l	line:168
+prop_width_ascii_first_used_row	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	166;"	l	line:166
+prop_width_ascii_last_used_column	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	169;"	l	line:169
+prop_width_ascii_last_used_row	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	167;"	l	line:167
+prop_width_ascii_leading_bits_to_mask	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	173;"	l	line:173
+prop_width_ascii_trailing_bits_to_mask	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	174;"	l	line:174
+prop_width_number_of_bytes_read	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	172;"	l	line:172
+prop_width_this_x_row_number	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	170;"	l	line:170
+prop_width_this_y_column_number	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	171;"	l	line:171
+read_switches	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	470;"	f	line:470	signature:(void)
+read_switches	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	61;"	p	line:61	signature:(void)
+read_switches_flag	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	91;"	v	line:91
+shift_bits_count	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	162;"	l	line:162
+string_5x5	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	510;"	v	line:510
+string_5x7	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	511;"	v	line:511
+string_6x10	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	512;"	v	line:512
+string_7x13	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	513;"	v	line:513
+string_monospace	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	514;"	v	line:514
+string_proportional	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	515;"	v	line:515
+string_standard_fonts	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	509;"	v	line:509
+switches_debounced	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	102;"	v	line:102
+switches_debounced_last	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	474;"	l	line:474	file:
+switches_last	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	473;"	l	line:473	file:
+switches_new	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	103;"	v	line:103
+switches_read	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.c	472;"	l	line:472
+user_mode_10ms_timer	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\ap-main.h	92;"	v	line:92
+v	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	138;"	m	line:138	union:_WORD_VAL
+v	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	159;"	m	line:159	union:_DWORD_VAL
+val	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	132;"	m	line:132	union:_WORD_VAL
+val	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	146;"	m	line:146	union:_DWORD_VAL
+w_temp	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	152;"	l	line:152
+word	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\main.h	158;"	m	line:158	union:_DWORD_VAL
+x_byte_coordinate	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	153;"	l	line:153
+y_bits_into_next_byte_working	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	160;"	l	line:160
+y_bits_to_shift_into_next_byte	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	159;"	l	line:159
+y_byte_number	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	154;"	l	line:154
+y_coord_shift_right_no_of_bits	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	161;"	l	line:161
+y_coord_shift_right_no_of_bits	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	686;"	l	line:686
+y_no_of_bytes_to_read_per_column	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	164;"	l	line:164
+y_no_of_bytes_to_write_per_column	C:\_EC\_PROJ\2034 Mono LCD Driver\firm\V1-03\display.c	165;"	l	line:165

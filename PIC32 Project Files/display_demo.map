@@ -1,0 +1,921 @@
+Archive member included because of file (symbol)
+
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(general-exception.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o (_general_exception_context)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(exit.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o (exit)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobdata.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(exit.o) (_libc_data)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobdata.o) (_filbuf_simple)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(exit.o) (pthread_mutex_lock)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-bootstrap-exception-handler.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o (_bootstrap_exception_handler)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-on-reset.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o (_on_reset)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-on-bootstrap.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o (_on_bootstrap)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-nmi-handler.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o (_nmi_handler)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_getc.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o) (_mon_getc)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_write.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o) (_mon_write)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_exit.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(exit.o) (_exit)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(errno.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o) (errno)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_putc.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_write.o) (_mon_putc)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_disable_interrupts_lib.o)
+                              ap-main.o (INTDisableInterrupts)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_enable_mv_int_lib.o)
+                              ap-main.o (INTEnableSystemMultiVectoredInt)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_restore_interrupts_lib.o)
+                              ap-main.o (INTRestoreInterrupts)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(pcache.o)
+                              ap-main.o (CheKseg0CacheOn)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_enable_interrupts_lib.o)
+                              C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_enable_mv_int_lib.o) (INTEnableInterrupts)
+C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                              ap-main.o (INTClearFlag)
+
+Allocating common symbols
+Common symbol       size              file
+
+display_scroll_text_display_pixels_count
+                    0x2               display.o
+display_scroll_text_skip_pixels_count
+                    0x2               display.o
+read_switches_flag  0x1               ap-main.o
+user_mode_10ms_timer
+                    0x2               ap-main.o
+display_scroll_1st_char_done_skip_pixels
+                    0x1               display.o
+general_use_10ms_timer
+                    0x2               ap-main.o
+general_use_100ms_timer
+                    0x2               ap-main.o
+contrast_10ms_timer
+                    0x1               ap-main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+kseg0_program_mem 0x9d000000         0x00080000         xr
+kseg0_boot_mem   0x9fc00490         0x00000970
+exception_mem    0x9fc01000         0x00001000
+kseg1_boot_mem   0xbfc00000         0x00000490
+debug_exec_mem   0xbfc02000         0x00000ff0
+config3          0xbfc02ff0         0x00000004
+config2          0xbfc02ff4         0x00000004
+config1          0xbfc02ff8         0x00000004
+config0          0xbfc02ffc         0x00000004
+kseg1_data_mem   0xa0000000         0x00008000         w !x
+sfrs             0xbf800000         0x00100000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o
+                0x00000001                _DEBUGGER = 0x1
+LOAD ap-main.o
+LOAD display.o
+LOAD display-model.o
+                0x00000001                __MPLAB_BUILD = 0x1
+                0x00000001                __MPLAB_DEBUG = 0x1
+                0x00000001                __MPLAB_DEBUGGER_REAL_ICE = 0x1
+                0x00000001                __ICD2RAM = 0x1
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4\libgcc.a
+START GROUP
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libm.a
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libe.a
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libdsp.a
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a
+END GROUP
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4\libgcc.a
+                0x00000400                PROVIDE (_min_stack_size, 0x400)
+                0x00000000                PROVIDE (_min_heap_size, 0x0)
+LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/./proc/32MX360F512L\processor.o
+                0x00000001                PROVIDE (_vector_spacing, 0x1)
+                0x9fc01000                _ebase_address = 0x9fc01000
+                0xbfc00000                _RESET_ADDR = 0xbfc00000
+                0xbfc00380                _BEV_EXCPT_ADDR = 0xbfc00380
+                0xbfc00480                _DBG_EXCPT_ADDR = 0xbfc00480
+                0xbfc02000                _DBG_CODE_ADDR = 0xbfc02000
+                0x9fc01180                _GEN_EXCPT_ADDR = (_ebase_address + 0x180)
+
+.config_BFC02FF0
+ *(.config_BFC02FF0)
+
+.config_BFC02FF4
+                0xbfc02ff4        0x4
+ *(.config_BFC02FF4)
+ .config_BFC02FF4
+                0xbfc02ff4        0x4 ap-main.o
+
+.config_BFC02FF8
+                0xbfc02ff8        0x4
+ *(.config_BFC02FF8)
+ .config_BFC02FF8
+                0xbfc02ff8        0x4 ap-main.o
+
+.config_BFC02FFC
+                0xbfc02ffc        0x4
+ *(.config_BFC02FFC)
+ .config_BFC02FFC
+                0xbfc02ffc        0x4 ap-main.o
+
+.reset          0xbfc00000       0x10
+ *(.reset)
+ .reset         0xbfc00000       0x10 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o
+                0xbfc00000                _reset
+
+.bev_excpt      0xbfc00380       0x10
+ *(.bev_handler)
+ .bev_handler   0xbfc00380       0x10 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o
+
+.dbg_excpt      0xbfc00480        0x8
+                0xbfc00488                . = (. + DEFINED (_DEBUGGER)?0x8:0x0)
+ *fill*         0xbfc00480        0x8 00
+
+.dbg_code       0xbfc02000      0xff0
+                0xbfc02ff0                . = (. + DEFINED (_DEBUGGER)?0xff0:0x0)
+ *fill*         0xbfc02000      0xff0 00
+
+.app_excpt      0x9fc01180       0x10
+ *(.gen_handler)
+ .gen_handler   0x9fc01180       0x10 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o
+
+.vector_0       0x9fc01200        0x0
+ *(.vector_0)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_0) <= (_vector_spacing << 0x5))), function at exception vector 0 too large)
+
+.vector_1       0x9fc01220        0x0
+ *(.vector_1)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_1) <= (_vector_spacing << 0x5))), function at exception vector 1 too large)
+
+.vector_2       0x9fc01240        0x0
+ *(.vector_2)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_2) <= (_vector_spacing << 0x5))), function at exception vector 2 too large)
+
+.vector_3       0x9fc01260        0x0
+ *(.vector_3)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_3) <= (_vector_spacing << 0x5))), function at exception vector 3 too large)
+
+.vector_4       0x9fc01280        0x0
+ *(.vector_4)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_4) <= (_vector_spacing << 0x5))), function at exception vector 4 too large)
+
+.vector_5       0x9fc012a0        0x0
+ *(.vector_5)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_5) <= (_vector_spacing << 0x5))), function at exception vector 5 too large)
+
+.vector_6       0x9fc012c0        0x0
+ *(.vector_6)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_6) <= (_vector_spacing << 0x5))), function at exception vector 6 too large)
+
+.vector_7       0x9fc012e0        0x0
+ *(.vector_7)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_7) <= (_vector_spacing << 0x5))), function at exception vector 7 too large)
+
+.vector_8       0x9fc01300        0x0
+ *(.vector_8)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_8) <= (_vector_spacing << 0x5))), function at exception vector 8 too large)
+
+.vector_9       0x9fc01320        0x0
+ *(.vector_9)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_9) <= (_vector_spacing << 0x5))), function at exception vector 9 too large)
+
+.vector_10      0x9fc01340        0x0
+ *(.vector_10)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_10) <= (_vector_spacing << 0x5))), function at exception vector 10 too large)
+
+.vector_11      0x9fc01360        0x0
+ *(.vector_11)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_11) <= (_vector_spacing << 0x5))), function at exception vector 11 too large)
+
+.vector_12      0x9fc01380        0x0
+ *(.vector_12)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_12) <= (_vector_spacing << 0x5))), function at exception vector 12 too large)
+
+.vector_13      0x9fc013a0        0x0
+ *(.vector_13)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_13) <= (_vector_spacing << 0x5))), function at exception vector 13 too large)
+
+.vector_14      0x9fc013c0        0x0
+ *(.vector_14)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_14) <= (_vector_spacing << 0x5))), function at exception vector 14 too large)
+
+.vector_15      0x9fc013e0        0x0
+ *(.vector_15)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_15) <= (_vector_spacing << 0x5))), function at exception vector 15 too large)
+
+.vector_16      0x9fc01400        0x0
+ *(.vector_16)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_16) <= (_vector_spacing << 0x5))), function at exception vector 16 too large)
+
+.vector_17      0x9fc01420        0x0
+ *(.vector_17)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_17) <= (_vector_spacing << 0x5))), function at exception vector 17 too large)
+
+.vector_18      0x9fc01440        0x0
+ *(.vector_18)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_18) <= (_vector_spacing << 0x5))), function at exception vector 18 too large)
+
+.vector_19      0x9fc01460        0x0
+ *(.vector_19)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_19) <= (_vector_spacing << 0x5))), function at exception vector 19 too large)
+
+.vector_20      0x9fc01480        0x8
+ *(.vector_20)
+ .vector_20     0x9fc01480        0x8 ap-main.o
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_20) <= (_vector_spacing << 0x5))), function at exception vector 20 too large)
+
+.vector_21      0x9fc014a0        0x0
+ *(.vector_21)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_21) <= (_vector_spacing << 0x5))), function at exception vector 21 too large)
+
+.vector_22      0x9fc014c0        0x0
+ *(.vector_22)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_22) <= (_vector_spacing << 0x5))), function at exception vector 22 too large)
+
+.vector_23      0x9fc014e0        0x0
+ *(.vector_23)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_23) <= (_vector_spacing << 0x5))), function at exception vector 23 too large)
+
+.vector_24      0x9fc01500        0x0
+ *(.vector_24)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_24) <= (_vector_spacing << 0x5))), function at exception vector 24 too large)
+
+.vector_25      0x9fc01520        0x0
+ *(.vector_25)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_25) <= (_vector_spacing << 0x5))), function at exception vector 25 too large)
+
+.vector_26      0x9fc01540        0x0
+ *(.vector_26)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_26) <= (_vector_spacing << 0x5))), function at exception vector 26 too large)
+
+.vector_27      0x9fc01560        0x0
+ *(.vector_27)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_27) <= (_vector_spacing << 0x5))), function at exception vector 27 too large)
+
+.vector_28      0x9fc01580        0x0
+ *(.vector_28)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_28) <= (_vector_spacing << 0x5))), function at exception vector 28 too large)
+
+.vector_29      0x9fc015a0        0x0
+ *(.vector_29)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_29) <= (_vector_spacing << 0x5))), function at exception vector 29 too large)
+
+.vector_30      0x9fc015c0        0x0
+ *(.vector_30)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_30) <= (_vector_spacing << 0x5))), function at exception vector 30 too large)
+
+.vector_31      0x9fc015e0        0x0
+ *(.vector_31)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_31) <= (_vector_spacing << 0x5))), function at exception vector 31 too large)
+
+.vector_32      0x9fc01600        0x0
+ *(.vector_32)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_32) <= (_vector_spacing << 0x5))), function at exception vector 32 too large)
+
+.vector_33      0x9fc01620        0x0
+ *(.vector_33)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_33) <= (_vector_spacing << 0x5))), function at exception vector 33 too large)
+
+.vector_34      0x9fc01640        0x0
+ *(.vector_34)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_34) <= (_vector_spacing << 0x5))), function at exception vector 34 too large)
+
+.vector_35      0x9fc01660        0x0
+ *(.vector_35)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_35) <= (_vector_spacing << 0x5))), function at exception vector 35 too large)
+
+.vector_36      0x9fc01680        0x0
+ *(.vector_36)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_36) <= (_vector_spacing << 0x5))), function at exception vector 36 too large)
+
+.vector_37      0x9fc016a0        0x0
+ *(.vector_37)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_37) <= (_vector_spacing << 0x5))), function at exception vector 37 too large)
+
+.vector_38      0x9fc016c0        0x0
+ *(.vector_38)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_38) <= (_vector_spacing << 0x5))), function at exception vector 38 too large)
+
+.vector_39      0x9fc016e0        0x0
+ *(.vector_39)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_39) <= (_vector_spacing << 0x5))), function at exception vector 39 too large)
+
+.vector_40      0x9fc01700        0x0
+ *(.vector_40)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_40) <= (_vector_spacing << 0x5))), function at exception vector 40 too large)
+
+.vector_41      0x9fc01720        0x0
+ *(.vector_41)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_41) <= (_vector_spacing << 0x5))), function at exception vector 41 too large)
+
+.vector_42      0x9fc01740        0x0
+ *(.vector_42)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_42) <= (_vector_spacing << 0x5))), function at exception vector 42 too large)
+
+.vector_43      0x9fc01760        0x0
+ *(.vector_43)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_43) <= (_vector_spacing << 0x5))), function at exception vector 43 too large)
+
+.vector_44      0x9fc01780        0x0
+ *(.vector_44)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_44) <= (_vector_spacing << 0x5))), function at exception vector 44 too large)
+
+.vector_45      0x9fc017a0        0x0
+ *(.vector_45)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_45) <= (_vector_spacing << 0x5))), function at exception vector 45 too large)
+
+.vector_46      0x9fc017c0        0x0
+ *(.vector_46)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_46) <= (_vector_spacing << 0x5))), function at exception vector 46 too large)
+
+.vector_47      0x9fc017e0        0x0
+ *(.vector_47)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_47) <= (_vector_spacing << 0x5))), function at exception vector 47 too large)
+
+.vector_48      0x9fc01800        0x0
+ *(.vector_48)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_48) <= (_vector_spacing << 0x5))), function at exception vector 48 too large)
+
+.vector_49      0x9fc01820        0x0
+ *(.vector_49)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_49) <= (_vector_spacing << 0x5))), function at exception vector 49 too large)
+
+.vector_50      0x9fc01840        0x0
+ *(.vector_50)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_50) <= (_vector_spacing << 0x5))), function at exception vector 50 too large)
+
+.vector_51      0x9fc01860        0x0
+ *(.vector_51)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_51) <= (_vector_spacing << 0x5))), function at exception vector 51 too large)
+
+.vector_52      0x9fc01880        0x0
+ *(.vector_52)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_52) <= (_vector_spacing << 0x5))), function at exception vector 52 too large)
+
+.vector_53      0x9fc018a0        0x0
+ *(.vector_53)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_53) <= (_vector_spacing << 0x5))), function at exception vector 53 too large)
+
+.vector_54      0x9fc018c0        0x0
+ *(.vector_54)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_54) <= (_vector_spacing << 0x5))), function at exception vector 54 too large)
+
+.vector_55      0x9fc018e0        0x0
+ *(.vector_55)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_55) <= (_vector_spacing << 0x5))), function at exception vector 55 too large)
+
+.vector_56      0x9fc01900        0x0
+ *(.vector_56)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_56) <= (_vector_spacing << 0x5))), function at exception vector 56 too large)
+
+.vector_57      0x9fc01920        0x0
+ *(.vector_57)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_57) <= (_vector_spacing << 0x5))), function at exception vector 57 too large)
+
+.vector_58      0x9fc01940        0x0
+ *(.vector_58)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_58) <= (_vector_spacing << 0x5))), function at exception vector 58 too large)
+
+.vector_59      0x9fc01960        0x0
+ *(.vector_59)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_59) <= (_vector_spacing << 0x5))), function at exception vector 59 too large)
+
+.vector_60      0x9fc01980        0x0
+ *(.vector_60)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_60) <= (_vector_spacing << 0x5))), function at exception vector 60 too large)
+
+.vector_61      0x9fc019a0        0x0
+ *(.vector_61)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_61) <= (_vector_spacing << 0x5))), function at exception vector 61 too large)
+
+.vector_62      0x9fc019c0        0x0
+ *(.vector_62)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_62) <= (_vector_spacing << 0x5))), function at exception vector 62 too large)
+
+.vector_63      0x9fc019e0        0x0
+ *(.vector_63)
+                0x00000001                ASSERT (((_vector_spacing == 0x0) || (SIZEOF (.vector_63) <= (_vector_spacing << 0x5))), function at exception vector 63 too large)
+
+.startup        0x9fc00490      0x1e0
+ *(.startup)
+ .startup       0x9fc00490      0x1e0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o
+
+.text           0x9d000000     0x32f4
+                0x9d000000                _text_begin = .
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x9d000000       0x18 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o
+ .text          0x9d000018      0xdfc ap-main.o
+                0x9d00077c                process_mode
+                0x9d0006bc                read_switches
+                0x9d000018                initialise
+                0x9d000cd0                Timer5IntHandler
+                0x9d000680                main
+                0x9d000df4                _general_exception_handler
+ .text          0x9d000e14     0x17c4 display.o
+                0x9d000fb4                display_bitmap
+                0x9d000e14                display_delay_ms
+                0x9d001d6c                display_const_string
+                0x9d000e84                display_initialise
+                0x9d000ec0                display_set_contrast
+                0x9d002110                display_variable_string
+                0x9d0024b4                display_byte_ordering_test_sequence
+                0x9d000f00                display_clear_screen
+ .text          0x9d0025d8      0x5b0 display-model.o
+                0x9d0025d8                display_model_initialise
+                0x9d0029ec                display_set_address
+                0x9d0026d8                display_model_set_contrast
+                0x9d002734                display_write_bitmap_byte
+                0x9d002ac4                display_write_command
+ .text.general_exception
+                0x9d002b88       0xd0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(general-exception.o)
+                0x9d002b88                _general_exception_context
+ .text.exit     0x9d002c58       0x9c C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(exit.o)
+                0x9d002c58                exit
+ .text._filbuf_simple
+                0x9d002cf4       0x48 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o)
+                0x9d002cf4                _filbuf_simple
+ .text._fflush_simple
+                0x9d002d3c       0x6c C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o)
+                0x9d002d3c                _fflush_simple
+ .text._flsbuf_simple
+                0x9d002da8       0xdc C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o)
+                0x9d002da8                _flsbuf_simple
+ .text._fwrite_simple
+                0x9d002e84       0x84 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o)
+                0x9d002e84                _fwrite_simple
+ .text._fsync_simple
+                0x9d002f08       0x34 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o)
+                0x9d002f08                _fsync_simple
+ .text._weak_pthread_mutex_init
+                0x9d002f3c        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f3c                _weak_pthread_mutex_init
+                0x9d002f3c                pthread_mutex_init
+ .text._weak_pthread_mutex_destroy
+                0x9d002f44        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f44                _weak_pthread_mutex_destroy
+                0x9d002f44                pthread_mutex_destroy
+ .text._weak_pthread_mutex_lock
+                0x9d002f4c        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f4c                _weak_pthread_mutex_lock
+                0x9d002f4c                pthread_mutex_lock
+ .text._weak_pthread_mutex_trylock
+                0x9d002f54        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f54                _weak_pthread_mutex_trylock
+                0x9d002f54                pthread_mutex_trylock
+ .text._weak_pthread_mutex_unlock
+                0x9d002f5c        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f5c                _weak_pthread_mutex_unlock
+                0x9d002f5c                pthread_mutex_unlock
+ .text._weak_pthread_mutex_setname_np
+                0x9d002f64        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f64                pthread_mutex_setname_np
+                0x9d002f64                _weak_pthread_mutex_setname_np
+ .text._weak_pthread_mutexattr_init
+                0x9d002f6c        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f6c                _weak_pthread_mutexattr_init
+                0x9d002f6c                pthread_mutexattr_init
+ .text._weak_pthread_mutexattr_destroy
+                0x9d002f74        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f74                pthread_mutexattr_destroy
+                0x9d002f74                _weak_pthread_mutexattr_destroy
+ .text._weak_pthread_mutexattr_setname_np
+                0x9d002f7c        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f7c                _weak_pthread_mutexattr_setname_np
+                0x9d002f7c                pthread_mutexattr_setname_np
+ .text._weak_pthread_mutexattr_settype_np
+                0x9d002f84        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f84                _weak_pthread_mutexattr_settype_np
+                0x9d002f84                pthread_mutexattr_settype_np
+ .text._weak_pthread_sysconf_np
+                0x9d002f8c        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f8c                _weak_pthread_sysconf_np
+                0x9d002f8c                pthread_sysconf_np
+ .text._weak_pthread_sigdisable_np
+                0x9d002f94        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f94                _weak_pthread_sigdisable_np
+                0x9d002f94                pthread_sigdisable_np
+ .text._weak_pthread_sigrestore_np
+                0x9d002f9c        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002f9c                pthread_sigrestore_np
+                0x9d002f9c                _weak_pthread_sigrestore_np
+ .text._weak__pthread_cleanup_push
+                0x9d002fa4        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002fa4                _weak__pthread_cleanup_push
+                0x9d002fa4                _pthread_cleanup_push
+ .text._weak__pthread_cleanup_pop
+                0x9d002fac        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002fac                _pthread_cleanup_pop
+                0x9d002fac                _weak__pthread_cleanup_pop
+ .text._weak__pthread_cleanup_push_defer
+                0x9d002fb4        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002fb4                _weak__pthread_cleanup_push_defer
+                0x9d002fb4                _pthread_cleanup_push_defer
+ .text._weak__pthread_cleanup_pop_restore
+                0x9d002fbc        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002fbc                _pthread_cleanup_pop_restore
+                0x9d002fbc                _weak__pthread_cleanup_pop_restore
+ .text._weak_pthread_once
+                0x9d002fc4       0x2c C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002fc4                _weak_pthread_once
+                0x9d002fc4                pthread_once
+                0x9d002fc4                _pthread_once
+ .text._weak_pthread_key_create
+                0x9d002ff0        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002ff0                pthread_key_create
+                0x9d002ff0                _weak_pthread_key_create
+ .text._weak_pthread_setspecific
+                0x9d002ff8        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d002ff8                _weak_pthread_setspecific
+                0x9d002ff8                pthread_setspecific
+ .text._weak_pthread_getspecific
+                0x9d003000        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d003000                pthread_getspecific
+                0x9d003000                _weak_pthread_getspecific
+ .text._weak__libc_private_storage
+                0x9d003008        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0x9d003008                _libc_private_storage
+                0x9d003008                _weak__libc_private_storage
+ .text._bootstrap_exception_handler
+                0x9d003010        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-bootstrap-exception-handler.o)
+                0x9d003010                _bootstrap_exception_handler
+ .text._on_reset
+                0x9d003018        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-on-reset.o)
+                0x9d003018                _on_reset
+ .text._on_bootstrap
+                0x9d003020        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-on-bootstrap.o)
+                0x9d003020                _on_bootstrap
+ .text          0x9d003028       0x18 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-nmi-handler.o)
+                0x9d003028                _nmi_handler
+ .text._mon_getc
+                0x9d003040        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_getc.o)
+                0x9d003040                _mon_getc
+ .text._mon_write
+                0x9d003048       0x4c C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_write.o)
+                0x9d003048                _mon_write
+ .text._exit    0x9d003094        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_exit.o)
+                0x9d003094                _exit
+ .text._mon_putc
+                0x9d00309c       0x28 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_putc.o)
+                0x9d00309c                _mon_putc
+ .text.INTDisableInterrupts
+                0x9d0030c4        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_disable_interrupts_lib.o)
+                0x9d0030c4                INTDisableInterrupts
+ .text.INTEnableSystemMultiVectoredInt
+                0x9d0030cc       0x34 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_enable_mv_int_lib.o)
+                0x9d0030cc                INTEnableSystemMultiVectoredInt
+ .text.INTRestoreInterrupts
+                0x9d003100       0x1c C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_restore_interrupts_lib.o)
+                0x9d003100                INTRestoreInterrupts
+ .text.CheKseg0CacheOff
+                0x9d00311c       0x18 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(pcache.o)
+                0x9d00311c                CheKseg0CacheOff
+ .text.CheKseg0CacheOn
+                0x9d003134       0x18 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(pcache.o)
+                0x9d003134                CheKseg0CacheOn
+ .text.INTEnableInterrupts
+                0x9d00314c        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_enable_interrupts_lib.o)
+                0x9d00314c                INTEnableInterrupts
+ .text.INTClearFlag
+                0x9d003154       0x28 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d003154                INTClearFlag
+ .text.INTSetFlag
+                0x9d00317c       0x28 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d00317c                INTSetFlag
+ .text.INTGetFlag
+                0x9d0031a4       0x28 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d0031a4                INTGetFlag
+ .text.INTEnable
+                0x9d0031cc       0x38 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d0031cc                INTEnable
+ .text.INTGetEnable
+                0x9d003204       0x28 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d003204                INTGetEnable
+ .text.INTSetPriority
+                0x9d00322c       0x3c C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d00322c                INTSetPriority
+ .text.INTGetPriority
+                0x9d003268       0x28 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d003268                INTGetPriority
+ .text.INTSetSubPriority
+                0x9d003290       0x3c C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d003290                INTSetSubPriority
+ .text.INTGetSubPriority
+                0x9d0032cc       0x28 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d0032cc                INTGetSubPriority
+ *(.text.*personality*)
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+                0x9d0032f4                _text_end = .
+
+.rodata         0x9d0032f4     0x4fa0
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x9d0032f4       0x6c ap-main.o
+                0x9d003314                string_7x13
+                0x9d003304                string_5x5
+                0x9d00331c                string_monospace
+                0x9d0032f4                string_standard_fonts
+                0x9d003308                string_5x7
+                0x9d003334                string_proportional
+                0x9d00330c                string_6x10
+ .rodata        0x9d003360     0x4920 display.o
+                0x9d007858                graph_xy
+                0x9d0038b0                font_05x05
+                0x9d003db0                font_06x10
+                0x9d003768                ec_logo_64x37
+                0x9d007850                graph_pixel
+                0x9d004aa4                font_23x26
+                0x9d003b30                font_05x07
+                0x9d0043ac                font_07x13
+                0x9d003360                ec_logo_128x64
+ .rodata        0x9d007c80       0x14 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobdata.o)
+                0x9d007c80                _io_funcs
+ .rodata        0x9d007c94      0x600 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+                0x9d007c94                __IntTbl
+ *(.rodata1)
+                0x9d008294                . = ALIGN (0x4)
+
+.sdata2         0x9d008294        0x0
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+                0x9d008294                . = ALIGN (0x4)
+
+.sbss2          0x9d008294        0x0
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+                0x9d008294                . = ALIGN (0x4)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame
+ *(.eh_frame)
+
+.dbg_data       0xa0000000      0x200
+                0xa0000200                . = (. + DEFINED (_DEBUGGER)?0x200:0x0)
+ *fill*         0xa0000000      0x200 00
+
+.data           0xa0000200       0xf4 load address 0x9d008294
+                0xa0000200                _data_begin = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0xa0000200       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(exit.o)
+                0xa0000200                __exfun_mx
+ .data          0xa0000220       0xd4 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobdata.o)
+ *(.gnu.linkonce.d.*personality*)
+ *(.data1)
+                0x9d008294                _data_image_begin = LOADADDR (.data)
+
+.eh_frame
+ *(.eh_frame)
+                0xa00082f0                _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got
+ *(.got.plt)
+ *(.got)
+
+.sdata          0xa00002f4        0x8 load address 0x9d008388
+                0xa00002f4                _sdata_begin = .
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+ .sdata         0xa00002f4        0x2 display.o
+                0xa00002f4                display_scroll_text_start_pixel
+ *fill*         0xa00002f6        0x2 00
+ .sdata         0xa00002f8        0x4 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobdata.o)
+                0xa00002f8                _libc_data
+                0xa00002fc                _sdata_end = .
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0xa00002fc                . = ALIGN (0x4)
+                0xa00002fc                _data_end = .
+                0xa00002fc                _bss_begin = .
+
+.sbss           0xa00002fc       0x27
+                0xa00002fc                _sbss_begin = .
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ .sbss          0xa00002fc        0xc ap-main.o
+                0xa00002ff                switches_new
+                0xa00002fc                display_contrast_level
+                0xa00002fe                switches_debounced
+ .sbss          0xa0000308        0x8 display.o
+                0xa0000308                display_auto_x_coordinate
+                0xa000030a                display_auto_y_coordinate
+ .sbss          0xa0000310        0x4 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(errno.o)
+                0xa0000310                errno
+ *(.scommon)
+ .scommon       0xa0000314        0x9 ap-main.o
+                0xa0000314                read_switches_flag
+                0xa0000316                user_mode_10ms_timer
+                0xa0000318                general_use_10ms_timer
+                0xa000031a                general_use_100ms_timer
+                0xa000031c                contrast_10ms_timer
+ *fill*         0xa000031d        0x1 00
+ .scommon       0xa000031e        0x5 display.o
+                0xa000031e                display_scroll_text_display_pixels_count
+                0xa0000320                display_scroll_text_skip_pixels_count
+                0xa0000322                display_scroll_1st_char_done_skip_pixels
+                0xa0000323                _sbss_end = .
+
+.bss            0xa0000324      0x10c
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0xa0000324       0x88 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobdata.o)
+ .bss           0xa00003ac       0x80 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o)
+ .bss           0xa000042c        0x4 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+                0xa000042c                __isthreaded
+ *(COMMON)
+                0xa0000430                . = ALIGN (0x4)
+                0xa0000430                . = ALIGN (0x4)
+                0xa0000430                _end = .
+                0xa0000430                _bss_end = .
+
+.heap           0xa0000430        0x0
+                0xa0000430                _heap = .
+                0xa0000430                . = (. + _min_heap_size)
+
+.stack          0xa0000430      0x400
+                0xa0000830                . = (. + _min_stack_size)
+ *fill*         0xa0000430      0x400 00
+
+.ramfunc        0xa0001000        0x0 load address 0x9d008390
+                0xa0001000                _ramfunc_begin = .
+ *(.ramfunc .ramfunc.*)
+                0xa0001000                . = ALIGN (0x4)
+                0xa0001000                _ramfunc_end = .
+                0x9d008390                _ramfunc_image_begin = LOADADDR (.ramfunc)
+                0x00000000                _ramfunc_length = SIZEOF (.ramfunc)
+                0x00001000                _bmxdkpba_address = (_ramfunc_begin - 0xa0000000)
+                0x00008000                _bmxdudba_address = 0x8000
+                0x00008000                _bmxdupba_address = 0x8000
+                0xa0008000                _stack = (_ramfunc_length > 0x0)?(_ramfunc_begin - 0x4):0xa0008000
+                0x00000001                ASSERT (((_min_stack_size + _min_heap_size) <= (_stack - _heap)), Not enough space to allocate both stack and heap.  Reduce heap and/or stack size.)
+
+.pdr            0x00000000      0x9a0
+ *(.pdr)
+ .pdr           0x00000000       0xa0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o
+ .pdr           0x000000a0       0xe0 ap-main.o
+ .pdr           0x00000180      0x100 display.o
+ .pdr           0x00000280       0xa0 display-model.o
+ .pdr           0x00000320       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(general-exception.o)
+ .pdr           0x00000340       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(exit.o)
+ .pdr           0x00000360       0xa0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o)
+ .pdr           0x00000400      0x2c0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+ .pdr           0x000006c0       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-bootstrap-exception-handler.o)
+ .pdr           0x000006e0       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-on-reset.o)
+ .pdr           0x00000700       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-on-bootstrap.o)
+ .pdr           0x00000720       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-nmi-handler.o)
+ .pdr           0x00000740       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_getc.o)
+ .pdr           0x00000760       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_write.o)
+ .pdr           0x00000780       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_exit.o)
+ .pdr           0x000007a0       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_putc.o)
+ .pdr           0x000007c0       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_disable_interrupts_lib.o)
+ .pdr           0x000007e0       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_enable_mv_int_lib.o)
+ .pdr           0x00000800       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_restore_interrupts_lib.o)
+ .pdr           0x00000820       0x40 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(pcache.o)
+ .pdr           0x00000860       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_enable_interrupts_lib.o)
+ .pdr           0x00000880      0x120 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+
+.reginfo        0x00000000       0x18
+ *(.reginfo)
+ .reginfo       0x00000000       0x18 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/crt0.o
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000      0x7e1
+ *(.comment)
+ .comment       0x00000000       0x4d ap-main.o
+ .comment       0x0000004d       0x4d display.o
+ .comment       0x0000009a       0x4d display-model.o
+ .comment       0x000000e7       0x9a C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(exit.o)
+ .comment       0x00000181       0xa0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobdata.o)
+ .comment       0x00000221       0xa1 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_iobfuncs.o)
+ .comment       0x000002c2       0x9b C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(stubs.o)
+ .comment       0x0000035d       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-bootstrap-exception-handler.o)
+ .comment       0x000003aa       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-on-reset.o)
+ .comment       0x000003f7       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(default-on-bootstrap.o)
+ .comment       0x00000444       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_getc.o)
+ .comment       0x00000491       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_write.o)
+ .comment       0x000004de       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_exit.o)
+ .comment       0x0000052b       0x9b C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(errno.o)
+ .comment       0x000005c6       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libc.a(_mon_putc.o)
+ .comment       0x00000613       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_disable_interrupts_lib.o)
+ .comment       0x00000660       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_enable_mv_int_lib.o)
+ .comment       0x000006ad       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_restore_interrupts_lib.o)
+ .comment       0x000006fa       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(pcache.o)
+ .comment       0x00000747       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral.a(int_enable_interrupts_lib.o)
+ .comment       0x00000794       0x4d C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib\libmchp_peripheral_32MX360F512L.a(int_tbl_libp.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x60
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 ap-main.o
+ .debug_aranges
+                0x00000020       0x20 display.o
+ .debug_aranges
+                0x00000040       0x20 display-model.o
+
+.debug_pubnames
+                0x00000000      0x4b7
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x1c8 ap-main.o
+ .debug_pubnames
+                0x000001c8      0x251 display.o
+ .debug_pubnames
+                0x00000419       0x9e display-model.o
+
+.debug_info     0x00000000     0x23cb
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0xff4 ap-main.o
+ .debug_info    0x00000ff4      0xdb6 display.o
+ .debug_info    0x00001daa      0x621 display-model.o
+
+.debug_abbrev   0x00000000      0x519
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x24d ap-main.o
+ .debug_abbrev  0x0000024d      0x1b1 display.o
+ .debug_abbrev  0x000003fe      0x11b display-model.o
+
+.debug_line     0x00000000      0x73d
+ *(.debug_line)
+ .debug_line    0x00000000      0x2f9 ap-main.o
+ .debug_line    0x000002f9      0x305 display.o
+ .debug_line    0x000005fe      0x13f display-model.o
+
+.debug_frame    0x00000000      0x274
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xbc ap-main.o
+ .debug_frame   0x000000bc      0x10c display.o
+ .debug_frame   0x000001c8       0xac display-model.o
+
+.debug_str      0x00000000       0xf3
+ *(.debug_str)
+ .debug_str     0x00000000       0x30 ap-main.o
+ .debug_str     0x00000030       0xb1 display.o
+ .debug_str     0x000000e1       0x12 display-model.o
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+/DISCARD/
+ *(.note.GNU-stack)
+OUTPUT(display_demo.elf elf32-tradlittlemips)
+
+.mdebug.abi32   0x9d008390        0x0
+
+.rel.dyn        0x9d008390        0x0
