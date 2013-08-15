@@ -25,13 +25,25 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 //Project Name:		MONOCHROME DISPLAY DRIVER
-//PIC24 SAMPLE PROJECT C CODE FILE
 
 
+
+#include "main.h"					//Global data type definitions (see https://github.com/ibexuk/C_Generic_Header_File )
+
+
+//****************************************************************************************
+//****************************************************************************************
+//  Project Name:		MONOCHROME DISPLAY DRIVER
+//						PIC24 SAMPLE PROJECT C CODE FILE
+//  Copyright:			EMBEDDED-CODE.COM
+//
+//<INSERT LICENCE BLOCK HERE>
+//****************************************************************************************
+//****************************************************************************************
 
 
 //----- INCLUDE FILES FOR THIS SOURCE CODE FILE -----
-#include "main.h"					//Global data type definitions (see https://github.com/ibexuk/C_Generic_Header_File )
+#include "main.h"					//(Include the project global defines file)
 #define	MAIN_C						//(Define used for following header file to flag that it is the header file for this source file)
 #include "ap-main.h"				//(Include header file for this source file)
 
@@ -415,6 +427,93 @@ void main ( void )
 
 
 
+
+
+
+
+
+
+
+
+
+//################################################>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//################################################>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//########## MANUFACTURE TEST FUNCTIONS ##########>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//################################################>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//################################################>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//REMOVE FROM NORMAL PROJECTS - THIS SECTION IS ONLY USED FOR FACTORY MANUFACTURE TEST
+
+		//CHECK FOR TEST BOX USART RX PIN TEST
+		//(We want to see a USART framing error for at least 100mS)
+		if (PORTCbits.RC7 == 0)
+		{
+			//Pause 50mS
+			general_use_10ms_timer = 5;
+			while(general_use_10ms_timer)
+				ClrWdt();
+	
+			//Reset the framing error flag and check for another framing error
+
+			general_use_10ms_timer = 2;
+			while(general_use_10ms_timer)
+				ClrWdt();
+			if (PORTCbits.RC7 == 0)
+			{
+				//RX PIN IS TRIPPED - WAIT FOR IT TO CLEAR
+				while (PORTCbits.RC7 == 0)
+				{
+					ClrWdt();
+					general_use_10ms_timer = 5;
+					while(general_use_10ms_timer);
+				}
+				//PAUSE 200mS
+				general_use_10ms_timer = 20;
+				while(general_use_10ms_timer)
+					ClrWdt();
+
+				//NOW DO CONTINUOUS TX FOR 800mS
+				general_use_10ms_timer = 80;
+				LATAbits.LATA5 = 1;	//RS485_DIRECTION_TO_TX = 1;
+				while(general_use_10ms_timer)
+				{
+					ClrWdt();
+					TXREG = 0x00;
+					while (TXSTAbits.TRMT == 0);
+				}
+				LATAbits.LATA5 = 0;	//RS485_DIRECTION_TO_TX = 0;
+				
+				//NOW FLASH ON SCL LED
+				LATCbits.LATC3 = 0;
+				TRISCbits.TRISC3 = 0;
+				general_use_10ms_timer = 30;
+				while(general_use_10ms_timer)
+					ClrWdt();
+				TRISCbits.TRISC3 = 1;
+
+				//NOW FLASH ON SDA LED
+				LATCbits.LATC4 = 0;
+				TRISCbits.TRISC4 = 0;
+				general_use_10ms_timer = 30;
+				while(general_use_10ms_timer)
+					ClrWdt();
+				TRISCbits.TRISC4 = 1;
+	
+			}
+
+
+			if ((RCSTAbits.FERR) || (RCSTAbits.OERR))
+			{
+				RCSTAbits.CREN = 0;
+				RCSTAbits.CREN = 1;
+			}
+			
+		}
+
+//################################################<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//################################################<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//################################################<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//################################################<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//################################################<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 

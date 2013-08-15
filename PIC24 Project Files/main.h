@@ -25,7 +25,33 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 //Project Name:		MONOCHROME DISPLAY DRIVER
-//PIC24 SAMPLE PROJECT GENERIC GLOBAL HEADER FILE
+
+
+
+#include "main.h"					//Global data type definitions (see https://github.com/ibexuk/C_Generic_Header_File )
+
+
+//****************************************************************************************
+//****************************************************************************************
+//  Project Name:		MONOCHROME DISPLAY DRIVER
+//						PIC24 SAMPLE PROJECT GENERIC GLOBAL HEADER FILE
+//  Copyright:			EMBEDDED-CODE.COM
+//
+//<INSERT LICENCE BLOCK HERE>
+//****************************************************************************************
+//****************************************************************************************
+
+
+//*********************************************
+//*********************************************
+//********** SAMPLE PROJECT REVISION **********
+//*********************************************
+//*********************************************
+//
+//This Version: V1.03
+//
+//Revision History
+//	See driver revision history file
 
 
 
@@ -121,14 +147,14 @@ typedef union _BYTE_VAL
 {
     struct
     {
-        unsigned int b0:1;
-        unsigned int b1:1;
-        unsigned int b2:1;
-        unsigned int b3:1;
-        unsigned int b4:1;
-        unsigned int b5:1;
-        unsigned int b6:1;
-        unsigned int b7:1;
+        unsigned char b0:1;
+        unsigned char b1:1;
+        unsigned char b2:1;
+        unsigned char b3:1;
+        unsigned char b4:1;
+        unsigned char b5:1;
+        unsigned char b6:1;
+        unsigned char b7:1;
     } bits;
     BYTE Val;
 } BYTE_VAL;

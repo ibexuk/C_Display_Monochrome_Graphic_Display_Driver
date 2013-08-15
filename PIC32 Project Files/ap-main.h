@@ -25,7 +25,21 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 //Project Name:		MONOCHROME DISPLAY DRIVER
-//PIC32 SAMPLE PROJECT C CODE HEADER FILE
+
+
+
+#include "main.h"					//Global data type definitions (see https://github.com/ibexuk/C_Generic_Header_File )
+
+
+//****************************************************************************************
+//****************************************************************************************
+//  Project Name:		MONOCHROME DISPLAY DRIVER
+//						PIC32 SAMPLE PROJECT C CODE HEADER FILE
+//  Copyright:			EMBEDDED-CODE.COM
+//
+//<INSERT LICENCE BLOCK HERE>
+//****************************************************************************************
+//****************************************************************************************
 
 
 

@@ -25,24 +25,38 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 //Project Name:		MONOCHROME DISPLAY DRIVER
-//DRIVER C CODE FILE
 
 
+
+#include "main.h"					//Global data type definitions (see https://github.com/ibexuk/C_Generic_Header_File )
+
+
+//****************************************************************************************
+//****************************************************************************************
+//  Project Name:		MONOCHROME DISPLAY DRIVER
+//						DRIVER C CODE FILE
+//  Copyright:			EMBEDDED-CODE.COM
+//
+//<INSERT LICENCE BLOCK HERE>
+//****************************************************************************************
+//****************************************************************************************
 
 
 
 //----- INCLUDE FILES FOR THIS SOURCE CODE FILE -----
-#include "main.h"					//Global data type definitions (see https://github.com/ibexuk/C_Generic_Header_File )
+#include "main.h"					//(Include the project global defines file)
 #define	DISPLAY_C					//(Define used for following header file to flag that it is the header file for this source file)
 #include "display.h"				//(Include header file for this source file)
 #include "display-model.h"			//Contains defines and functions specific to the screen module being used - if changing display
 									//screen change the "display-model.h" file that is included in the project
 
+
+
+
 //----- OTHER PROJECT FILES REQUIRED BY THIS SOURCE CODE FILE -----
 
 
 //----- COMPILER LIBRARY FILES REQUIRED BY THIS SOURCE CODE FILE -----
-
 
 
 
@@ -130,11 +144,9 @@ void display_clear_screen (BYTE invert_pixels)
 	{
 		//Do for each line within each page
 		for (line_number = 0; line_number < DISPLAY_WIDTH_PIXELS; line_number++)
-			display_write_bitmap_byte (0xff, invert_pixels, line_number, page_number);
+			display_write_bitmap_byte (0, 0xff, invert_pixels, line_number, page_number);
 	}
 }
-
-
 
 
 
@@ -147,17 +159,22 @@ void display_clear_screen (BYTE invert_pixels)
 //*************************************
 //
 //image_flash_address			Start address of bitmap in flash memory (set to 0 if bitmap is in program memory))
-//*image_memory_address			Pointer to bitmap in program memory (set to 0 if bitmap is in flash memory)
+//*image_memory_address			Pointer to bitmap in program memory (set to 0 if bitmap is in flash memory).  (Fonts must be in program memory).
 //
-//image_options		Bit 15:13	Unused
-//					Bit 12		Font table image: 1 = Scroll text, 0 = static text
-//					Bit 11:10	If either is high then do not output to the screen (used for centre and right aligned text)
-//					Bit 9		Font table image: 1 = using proportionally spaced characters
-//					Bit 8		Font table image: 0 = displayed along X axis, 1 = display along Y axis
-//					Bit 7		1 = Invert pixels (i.e. a pixel on becomes off and vice versa)
-//					Bit 6:0		0 = image is a normal bitmap.
-//								>0 = Image is from a font table.  The address given is the start of the font table.  The value of bits 6:0 is the
-//								ASCII character required (0x01 - 0x7F)
+//image_options		Bit 15		1 = Invert pixels (i.e. a pixel on becomes off and vice versa)
+//					Bit 14		Calling function is display__string (internal use flag)
+//					Bit 13:5	Unused
+//					Bit 4:3		String options:- 0x00 = align left, 0x01 = align centre, 0x02 = align right, 0x03 = scrolling
+//					Bit 2:0		Display Bitmap Type:
+//								0x00 =	Display normal bitmap
+//								0x01 =	Display character from a font table.  The address given is the program memory start address of the character in the font table. 
+//										display_bitmap_height and display_bitmap_width have been loaded with the character bitmap dimensions.
+//								0x02 =	Display empty block. display_bitmap_height and display_bitmap_width need to have been loaded with the requried size.  This is a really
+//										useful way of clearing or turning on a block of pixels in a specified area of the display. image_flash_address & p_image_memory_address
+//										are ignored.
+//								0x03 =	Invert displayed pixels in block. display_bitmap_height and display_bitmap_width need to have been loaded with the requried size.  Use
+//										this to invert all of the currently displayed pixels within the specified block. image_flash_address & p_image_memory_address are ignored.
+//								0x## = 	Other values are undefined
 //
 //x_start_coord = 0 to DISPLAY_WIDTH_PIXELS.	(If = 0xffff then the 'display_auto_x_coordinate' variable is used for the bitmap x coordiante.  This
 //												variable is updated with the next x	coordinate each time this routine is called to allow successive
@@ -165,12 +182,8 @@ void display_clear_screen (BYTE invert_pixels)
 //y_start_coord = 0 to DISPLAY_HEIGHT_PIXELS	(If = 0xffff then the 'display_auto_y_coordinate' variable is used for the bitmap y coordiante.  This
 //												variable is updated with the next y	coordinate each time this routine is called to allow successive
 //												display across a screen).
-//
 void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, WORD x_start_coord, WORD y_start_coord)
 {
-	BYTE b_temp;
-	BYTE b_temp1;
-	WORD w_temp;
 	WORD x_byte_coordinate;
 	WORD y_byte_number;
 	WORD image_width;
@@ -184,17 +197,32 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 	BYTE byte_mask;
 	WORD y_no_of_bytes_to_read_per_column;
 	WORD y_no_of_bytes_to_write_per_column;
-	BYTE prop_width_ascii_first_used_row;
-	BYTE prop_width_ascii_last_used_row;
-	BYTE prop_width_ascii_first_used_column;
-	BYTE prop_width_ascii_last_used_column;
-	BYTE prop_width_this_x_row_number;
-	BYTE prop_width_this_y_column_number;
-	WORD prop_width_number_of_bytes_read;
-	BYTE prop_width_ascii_leading_bits_to_mask;
-	BYTE prop_width_ascii_trailing_bits_to_mask;
+	BYTE display_bitmap_flags = 0;
 
 
+	#ifdef INVERT_USER_X_Y_COORDS
+		WORD w_temp;
+		if (!(image_options & 0x4000))		//display__string functions will have already have done the reverse
+		{
+			w_temp = x_start_coord;
+			x_start_coord = y_start_coord;
+			y_start_coord = w_temp;
+		}	
+	#endif
+
+
+	if ((image_options & DISPLAY_BITMAP_TYPE_BIT_MASK) == DISPLAY_INVERT_BLOCK_PIXELS)
+	{
+		//------------------------------------------------------
+		//----- INVERT CURRENTLY DISPLAYED PIXELS IN BLOCK -----
+		//------------------------------------------------------
+		display_bitmap_flags |= 0x01;			//Set flag for display_write_bitmap_byte function
+		
+		image_options &= ~(WORD)DISPLAY_BITMAP_TYPE_BIT_MASK;		//Change to display empty block of inverted pixels mode (display_write_bitmap_byte flag will take care of the inverting for us)
+		image_options |= (DISPLAY_EMPTY_BLOCK | DISPLAY_INVERT_PIXELS);
+	}
+	
+	
 	//-----------------------------------------------------------------------------
 	//----- IF X OR Y COODIANTE = 0XFFFF THEN USE THE AUTO UPDATED COORDINATE -----
 	//-----------------------------------------------------------------------------
@@ -209,9 +237,38 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 	//----- GET BITMAP WIDTH, HEIGHT AND FLAGS FROM THE BITMAP HEADER -----
 	//---------------------------------------------------------------------
 	//(BYTES 0:3)
-	if (p_image_memory_address != 0)
+	if ((image_options & DISPLAY_BITMAP_TYPE_BIT_MASK) == DISPLAY_FONT_CHARACTER)
 	{
-		//----- BITMAP IS IN PROGRAM MEMORY -----
+		//----- DISPLAYING FONT CHARACTER -----
+		if (p_image_memory_address == 0)		//Ensure we are reading program memory
+			return;
+		
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			image_width = display_bitmap_height;				//We already have the width and height values from the display_string function calling the get font character values function.
+			image_height = display_bitmap_width;
+		#else
+			image_width = display_bitmap_width;
+			image_height = display_bitmap_height;
+		#endif
+		
+		image_flags = 0;
+	}
+	else if ((image_options & DISPLAY_BITMAP_TYPE_BIT_MASK) == DISPLAY_EMPTY_BLOCK)
+	{		
+		//----- DISPLAYING EMPTY BLOCK -----
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			image_width = display_bitmap_height;				//These should have have been set by calling function
+			image_height = display_bitmap_width;
+		#else
+			image_width = display_bitmap_width;
+			image_height = display_bitmap_height;
+		#endif
+		
+		image_flags = 0;
+	}
+	else if (p_image_memory_address != 0)
+	{
+		//----- DISPLAYING BITMAP FROM PROGRAM MEMORY -----
 		image_width = *p_image_memory_address++;
 		image_width <<= 8;
 		image_width += *p_image_memory_address++;	
@@ -224,7 +281,7 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 	}
 	else
 	{
-		//----- BITMAP IS IN FLASH MEMORY -----
+		//----- DISPLAYING BITMAP FROM FLASH MEMORY -----
 		#ifdef DISPLAY_USING_FLASH_MEMORY
 			image_width = DISPLAY_FLASH_READ_FUNCTION(DISPLAY_FLASH_MEMORY_START_ADDRESS + image_flash_address++);
 			image_width <<= 8;
@@ -240,6 +297,8 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 		#endif
 	}
 
+
+	//DO BASIC CHECKS
 	if (image_width > DISPLAY_WIDTH_PIXELS)
 		image_width = DISPLAY_WIDTH_PIXELS;
 
@@ -252,327 +311,20 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 		return;
 
 
-	//---------------------------------------------------------------------------------------------
-	//----- IF THIS IS AN ASCII FONT CHARACTER OFFSET TO THE START OF THE REQUESTED CHARACTER -----
-	//---------------------------------------------------------------------------------------------
-	if (image_options & 0x007f)
-	{
-		if (p_image_memory_address != 0)
-		{
-			p_image_memory_address += ((0x7f - (image_options & 0x007f)) * (image_width * ((image_height >> 3) + 1)));
-		}
-		#ifdef DISPLAY_USING_FLASH_MEMORY
-		else
-		{
-			image_flash_address += ((0x7f - (image_options & 0x007f)) * (image_width * ((image_height >> 3) + 1)));
-		}
-		#endif
-	}
-
-
-	//----------------------------------------------------------------------------------------
-	//----------------------------------------------------------------------------------------
-	//----- IF DISPLAYING PROPORTIONAL WIDTH ASCII THEN PRE-PROCESS THE CHARACTER BITMAP -----
-	//----------------------------------------------------------------------------------------
-	//----------------------------------------------------------------------------------------
-	if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL))
-	{
-		//We want to know where the first and last pixel is on each axis (as we display on screens in any of the 4 possible orientations)
-	
-		//Getting the values for the rows (X axis):-
-		//Read each column bit by bit and store the first and last pixel number
-	
-		//Getting the values for the columns (Y axis):-
-		//For each Y column see if at least 1 pixel is on.
-		//If yes and the column first pixel number is blank then store this as the first column.
-		//If yes store this as the last column
-
-		//Set default values
-		prop_width_ascii_first_used_row = 0xff;
-		prop_width_ascii_last_used_row = 0;
-		prop_width_ascii_first_used_column = 0xff;
-		prop_width_ascii_last_used_column = 0;
-		prop_width_this_y_column_number = 0;
-		prop_width_number_of_bytes_read = 0;				//(This variable is used to restore the memory address after this section)
-	
-		//--------------------------------
-		//----- READ THE BITMAP DATA -----
-		//--------------------------------
-		//- We read 1 byte at a time of bitmap data.  The bitmap data is arranged 1 column (Y axis) after the other.  If
-		//the Y axis number of pixels is not a multiple of 8 bits then the last byte of each column of bitmap data will
-		//contain unused bits to pad the colum length to be byte alligned.
-	
-		//----- Calculate the number of bytes of bitmap data to read per column -----
-		if ((image_height & 0x07) == 0)
-			y_no_of_bytes_to_read_per_column = (image_height >> 3);
-		else
-			y_no_of_bytes_to_read_per_column = (image_height >> 3) + 1;
-	
-		//------------------------------------
-		//----- READ EACH COLUMN LOOP -----
-		//------------------------------------
-		for (x_byte_coordinate = x_start_coord; (x_byte_coordinate - x_start_coord) < image_width; x_byte_coordinate++)
-		{
-			prop_width_this_x_row_number = 0;
-			//------------------------------------
-			//----- READ THIS COLUMN LOOP -----
-			//------------------------------------
-			for (y_byte_number = 0; y_byte_number < y_no_of_bytes_to_read_per_column; y_byte_number++)
-			{
-				//----- GET THE NEXT BITMAP BYTE FROM FLASH MEMORY AND DO THE BIT SHIFT -----
-				if (p_image_memory_address != 0)
-				{
-					//----- BITMAP IS IN PROGRAM MEMORY -----
-					bitmap_memory_data = *p_image_memory_address++;
-				}
-				#ifdef DISPLAY_USING_FLASH_MEMORY
-					else
-					{
-						//----- BITMAP IS IN FLASH MEMORY -----
-						bitmap_memory_data = DISPLAY_FLASH_READ_FUNCTION(DISPLAY_FLASH_MEMORY_START_ADDRESS + image_flash_address++);
-					}
-				#endif
-				prop_width_number_of_bytes_read++;
-	
-				//CHECK THE BITMAP DATA
-				//Read each column bit by bit and store the first and last pixel number
-				for (b_temp = 0x80; b_temp > 0; b_temp >>= 1)						//Do for each bit
-				{
-					if (bitmap_memory_data & b_temp)
-					{
-						if (prop_width_this_x_row_number < prop_width_ascii_first_used_row)
-							prop_width_ascii_first_used_row = prop_width_this_x_row_number;
-						if (prop_width_this_x_row_number > prop_width_ascii_last_used_row)
-							prop_width_ascii_last_used_row = prop_width_this_x_row_number;
-					}
-					prop_width_this_x_row_number++;
-				}
-	
-				//For each Y column see if at least 1 pixel is on.
-				//If yes and the column first pixel number is blank then store this as the first row.
-				//If yes store this as the last column
-				if (bitmap_memory_data)
-				{
-					//At least 1 pixel is on in this column
-					prop_width_ascii_last_used_column = prop_width_this_y_column_number;		//Store this as the current last column (will be overwritten if further columns have pixels on)
-					if (prop_width_ascii_first_used_column == 0xff)
-						prop_width_ascii_first_used_column = prop_width_this_y_column_number;	//Store this as the first column found with a pixel on
-				}
-	
-			}
-			
-			prop_width_this_y_column_number++;
-		}
-
-
-		//--------------------------------------------------------------------------------
-		//----- RESTORE THE MEMORY ADDRESS BACK TO THE START OF THE CHARACTER BITMAP -----
-		//--------------------------------------------------------------------------------
-		if (p_image_memory_address != 0)
-		{
-			//----- BITMAP IS IN PROGRAM MEMORY -----
-			p_image_memory_address -= prop_width_number_of_bytes_read;
-		}
-		#ifdef DISPLAY_USING_FLASH_MEMORY
-			else
-			{
-				//----- BITMAP IS IN FLASH MEMORY -----
-				image_flash_address -= prop_width_number_of_bytes_read;
-			}
-		#endif
-
-
-		//FROM THE ABOVE CODE WE NOW HAVE:-
-		//prop_width_ascii_first_used_row 		X Axis (0xff = none found)
-		//prop_width_ascii_last_used_row		X Axis (0 = none found)
-		//prop_width_ascii_first_used_column	Y Axis (column of bytes) (0xff = non found)
-		//prop_width_ascii_last_used_column		Y Axis (column of bytes) (0 = non found)
-
-
-		if ((prop_width_ascii_last_used_row == 0) || (prop_width_ascii_first_used_row == 0xff))
-		{
-			//One of the row values has not been found so force to full image width (this is blank space character)
-			prop_width_ascii_first_used_row = 0;
-			prop_width_ascii_last_used_row = image_height - 1;
-		}
-
-		if ((prop_width_ascii_last_used_column == 0) || (prop_width_ascii_first_used_column == 0xff))
-		{
-			//One of the column values has not been found so force to full image width (this is blank space character)
-			prop_width_ascii_first_used_column = 0;
-			prop_width_ascii_last_used_column = image_width - 1;
-		}
-
-
-		if (image_options & DISPLAY_STRING_SCROLL)
-		{
-			//-------------------------------------
-			//----- DISPLAYING SCROLLING TEXT -----
-			//-------------------------------------
-			//Scrolling text must be proportional so we simply alter the proportional first and last values just found and the functionality
-			//in the remainder of this function will automatically deal with display of part characters, in the same way as it deals with
-			//displaying proportional characters (this is the only section that deals with scrolling text).
-
-			//Set default auto coordinates for next time in case scrolling text exits without displaying
-			//(due to there being leading pixels to skip)
-			display_auto_x_coordinate = x_start_coord;
-			display_auto_y_coordinate = y_start_coord;
-	
-	
-			if (image_options & DISPLAY_STRING_ON_Y_AXIS)
-			{
-				//--------------------------------
-				//----- DISPLAYING ON Y AXIS -----
-				//--------------------------------
-				if (display_scroll_text_skip_pixels_count)
-				{
-					//----- CURRENTLY IGNORING LEADING PIXELS -----
-					if (((prop_width_ascii_last_used_row - prop_width_ascii_first_used_row) + 1) <= display_scroll_text_skip_pixels_count)
-					{
-						//THERE ARE MORE PIXELS TO IGNORE THAN THE WIDTH OF THIS CHARACTER
-						//Update values and exit without displaying
-						display_scroll_text_skip_pixels_count -= ((prop_width_ascii_last_used_row - prop_width_ascii_first_used_row) + 1);
-						
-						//Flag to main function that it can remove the 1st character of the scrolling text
-						if (display_scroll_1st_char_done_skip_pixels == 0)
-						{
-							if (display_scroll_text_skip_pixels_count)
-								display_scroll_1st_char_done_skip_pixels = display_scroll_text_skip_pixels_count;
-							else
-								display_scroll_1st_char_done_skip_pixels = 0xff;		//Special value if 1st character needs to be removed and skip pixels count should be zero
-						}
-						
-						return;
-					}
-					else
-					{
-						//THIS CHARACTER IS WIDER THAN THE NUMBER OF PIXELS LEFT TO IGNORE SO DISPLAY THE REMAINING PART OF IT
-						#ifdef INVERT_Y_AXIS_COORDINATES
-							prop_width_ascii_last_used_row -= display_scroll_text_skip_pixels_count;
-						#else
-							prop_width_ascii_first_used_row += display_scroll_text_skip_pixels_count;
-						#endif
-						
-						display_scroll_text_skip_pixels_count = 0;
-					}
-				}
-				//----- CHECK FOR REMOVE TRAILING PIXELS -----
-				if (display_scroll_text_display_pixels_count == 0)
-				{
-					//ALREADY DISPLAYED ALL OF THE PIXELS TO INCUDE TO DON'T DISPLAY THIS CHARACTER
-					return;
-				}
-				else if (display_scroll_text_display_pixels_count > ((prop_width_ascii_last_used_row - prop_width_ascii_first_used_row) + 1))
-				{
-					//THE WIDTH OF THIS CHARACTER IS LESS THAN THE REMAINING PIXELS TO DISPLAY
-					//Update values and display it as normal
-					display_scroll_text_display_pixels_count -= ((prop_width_ascii_last_used_row - prop_width_ascii_first_used_row) + 1);
-				}
-				else
-				{
-					//THIS CHARACTER IS WIDER THAN OR EQUAL TO THE NUMBER OF PIXELS LEFT TO DISPLAY SO DISPLAY THE LEADING PART OF IT
-					#ifdef INVERT_Y_AXIS_COORDINATES
-						prop_width_ascii_first_used_row = prop_width_ascii_last_used_row - (display_scroll_text_display_pixels_count - 1);
-					#else
-						prop_width_ascii_last_used_row = prop_width_ascii_first_used_row + (display_scroll_text_display_pixels_count - 1);
-					#endif
-
-					display_scroll_text_display_pixels_count = 0;
-				}
-			}
-			else
-			{
-				//--------------------------------
-				//----- DISPLAYING ON X AXIS -----
-				//--------------------------------
-				if (display_scroll_text_skip_pixels_count)
-				{
-					//----- CURRENTLY IGNORING LEADING PIXELS -----
-					if (((prop_width_ascii_last_used_column - prop_width_ascii_first_used_column) + 1) <= display_scroll_text_skip_pixels_count)
-					{
-						//THERE ARE MORE PIXELS TO IGNORE THAN THE WIDTH OF THIS CHARACTER
-						//Update values and exit without displaying
-						display_scroll_text_skip_pixels_count -= ((prop_width_ascii_last_used_column - prop_width_ascii_first_used_column) + 1);
-						
-						//Flag to main function that it can remove the 1st character of the scrolling text
-						if (display_scroll_1st_char_done_skip_pixels == 0)
-						{
-							if (display_scroll_text_skip_pixels_count)
-								display_scroll_1st_char_done_skip_pixels = display_scroll_text_skip_pixels_count;
-							else
-								display_scroll_1st_char_done_skip_pixels = 0xff;		//Special value if 1st character needs to be removed and skip pixels count should be zero
-						}
-						
-						return;
-					}
-					else
-					{
-						//THIS CHARACTER IS WIDER THAN THE NUMBER OF PIXELS LEFT TO IGNORE SO DISPLAY THE REMAINING PART OF IT
-						prop_width_ascii_first_used_column += display_scroll_text_skip_pixels_count;
-						display_scroll_text_skip_pixels_count = 0;
-					}
-				}
-				//----- CHECK FOR REMOVE TRAILING PIXELS -----
-				if (display_scroll_text_display_pixels_count == 0)
-				{
-					//ALREADY DISPLAYED ALL OF THE PIXELS TO INCUDE TO DON'T DISPLAY THIS CHARACTER
-					return;
-				}
-				else if (display_scroll_text_display_pixels_count > ((prop_width_ascii_last_used_column - prop_width_ascii_first_used_column) + 1))
-				{
-					//THE WIDTH OF THIS CHARACTER IS LESS THAN THE REMAINING PIXELS TO DISPLAY
-					//Update values and display it as normal
-					display_scroll_text_display_pixels_count -= ((prop_width_ascii_last_used_column - prop_width_ascii_first_used_column) + 1);
-				}
-				else
-				{
-					//THIS CHARACTER IS WIDER THAN OR EQUAL TO THE NUMBER OF PIXELS LEFT TO DISPLAY SO DISPLAY THE LEADING PART OF IT
-					prop_width_ascii_last_used_column = prop_width_ascii_first_used_column + (display_scroll_text_display_pixels_count - 1);
-					display_scroll_text_display_pixels_count = 0;
-				}
-			}
-		}
-
-
-		//---------------------------------------------------------------
-		//----- DEAL WITH APPLYING PROPORTIONAL WIDTH IN THE X AXIS -----
-		//---------------------------------------------------------------
-		//The Y axis is easy to modify as we simply remove unused columns.  The X axis is more complex as this is the axis
-		//that is displayed in bytes - it is dealt with in the display bitmap data code below.
-		if ((image_options & DISPLAY_STRING_ON_Y_AXIS) == 0)
-		{
-			//----- UPDATE THE IMAGE WIDTH VALUE -----
-			image_width -= ((image_width - prop_width_ascii_last_used_column) - 1);
-			image_width -= prop_width_ascii_first_used_column;
-
-			//----- OFFSET THE MEMORY START ADDRESS TO THE FIRST ROW TO BE USED FOR THE BITMAP -----
-			if (p_image_memory_address != 0)
-			{
-				//----- BITMAP IS IN PROGRAM MEMORY -----
-				p_image_memory_address += (prop_width_ascii_first_used_column * ((image_height >> 3) + 1));
-			}
-			#ifdef DISPLAY_USING_FLASH_MEMORY
-			else
-			{
-				//----- BITMAP IS IN FLASH MEMORY -----
-				image_flash_address += (prop_width_ascii_first_used_column * ((image_height >> 3) + 1));
-			}
-			#endif
-		}
-
-	}
 
 	//-------------------------------------------------------------------------
 	//----- MODIFY THE Y START COORDINATE IF DEFINED TO DISPLAY IN REVERSE -----
 	//-------------------------------------------------------------------------
-	#ifdef INVERT_Y_AXIS_COORDINATES
-		y_start_coord -= (image_height - 1);
-		if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL) && (image_options & DISPLAY_STRING_ON_Y_AXIS))
-		{
-			//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
-			y_start_coord += ((image_height - 1) - (prop_width_ascii_last_used_row - prop_width_ascii_first_used_row));
-		}
-	#endif
+//	#ifdef INVERT_Y_AXIS_COORDINATES
+//		//y_start_coord -= (image_height - 1);
+//		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+//			if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL))
+//			{
+//				//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
+//				y_start_coord += ((image_height - 1) - (prop_width_ascii_last_used_row - prop_width_ascii_first_used_row));
+//			}
+//		#endif
+//	#endif
 
 
 
@@ -591,11 +343,13 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 	//----- CALCULATE THE NUMBER OF BITS TO SHIFT THE BITMAP DATA TO THE RIGHT BASED ON THE Y START COORDINATE -----
 	y_coord_shift_right_no_of_bits = (y_start_coord & 0x07);
 
-	if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL) && (image_options & DISPLAY_STRING_ON_Y_AXIS))
-	{
-		//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
-		y_coord_shift_right_no_of_bits = ((y_start_coord - prop_width_ascii_first_used_row) & 0x07);
-	}
+//	#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+//		if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL))
+//		{
+//			//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
+//			y_coord_shift_right_no_of_bits = ((y_start_coord - prop_width_ascii_first_used_row) & 0x07);
+//		}
+//	#endif
 
 
 	//----- CALCULATE THE NUMBER OF BYTES OF BITMAP DATA TO READ PER COLUMN -----
@@ -611,23 +365,31 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 		y_no_of_bytes_to_write_per_column = ((y_coord_shift_right_no_of_bits + image_height) >> 3) + 1;
 
 
+	if ((image_options & DISPLAY_BITMAP_TYPE_BIT_MASK) == DISPLAY_FONT_CHARACTER)
+	{
+		//----- FONT CHARACTERS ARE STORED BACKWARDS COMPARED TO BITMAPS SO COMPENSATE -----
+		p_image_memory_address += (y_no_of_bytes_to_read_per_column * (image_width - 1));		//Offset to final row
+	}
+
 	//------------------------------------
 	//----- DISPLAY EACH COLUMN LOOP -----
 	//------------------------------------
 	for (x_byte_coordinate = x_start_coord; (x_byte_coordinate - x_start_coord) < image_width; x_byte_coordinate++)
-	{
+	{		
 		//RESET THE BIT SHIFT REGISTERS READY FOR THE NEW COLUMN
 		y_bits_to_shift_into_next_byte = 0;
 
-		if (image_options & 0x007f)
-		{
-			if ((image_options & DISPLAY_STRING_PROPORTIONAL) && (image_options & DISPLAY_STRING_ON_Y_AXIS))		//(If's seperated to speed up display of non text bitmaps)
-			{
-				//SETUP REGISTERS FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
-				prop_width_ascii_leading_bits_to_mask = prop_width_ascii_first_used_row + y_coord_shift_right_no_of_bits;	
-				prop_width_ascii_trailing_bits_to_mask = (image_height - prop_width_ascii_last_used_row) - 1;
-			}
-		}
+//		if (image_options & 0x007f)
+//		{
+//			#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+//				if ((image_options & DISPLAY_STRING_PROPORTIONAL))		//(If's seperated to speed up display of non text bitmaps)
+//				{
+//					//SETUP REGISTERS FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
+//					prop_width_ascii_leading_bits_to_mask = prop_width_ascii_first_used_row + y_coord_shift_right_no_of_bits;	
+//					prop_width_ascii_trailing_bits_to_mask = (image_height - prop_width_ascii_last_used_row) - 1;
+//				}
+//			#endif
+//		}
 
 		//------------------------------------
 		//----- DISPLAY THIS COLUMN LOOP -----
@@ -642,23 +404,30 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 				//-------------------------------------------------------------
 				//----- THIS IS NOT A FINAL OVERFLOW BYTE TO BE DISPLAYED -----
 				//-------------------------------------------------------------
-				if (p_image_memory_address != 0)
+				if ((image_options & DISPLAY_BITMAP_TYPE_BIT_MASK) == DISPLAY_EMPTY_BLOCK)
 				{
-					//----- BITMAP IS IN PROGRAM MEMORY -----
-					bitmap_memory_data = *p_image_memory_address++;
+					bitmap_memory_data = 0x00;
 				}
-				#ifdef DISPLAY_USING_FLASH_MEMORY
-					else
+				else
+				{				
+					if (p_image_memory_address != 0)
 					{
-						//----- BITMAP IS IN FLASH MEMORY -----
-						bitmap_memory_data = DISPLAY_FLASH_READ_FUNCTION(DISPLAY_FLASH_MEMORY_START_ADDRESS + image_flash_address++);
+						//----- BITMAP IS IN PROGRAM MEMORY -----
+						bitmap_memory_data = *p_image_memory_address++;
 					}
-				#endif
+					#ifdef DISPLAY_USING_FLASH_MEMORY
+						else
+						{
+							//----- BITMAP IS IN FLASH MEMORY -----
+							bitmap_memory_data = DISPLAY_FLASH_READ_FUNCTION(DISPLAY_FLASH_MEMORY_START_ADDRESS + image_flash_address++);
+						}
+					#endif
+				}
 
 				//--------------------------------------------------
 				//----- INVERT THE PIXELS IF OPTION BIT IS SET -----
 				//--------------------------------------------------
-				if (image_options & 0x0080)
+				if (image_options & DISPLAY_INVERT_PIXELS)
 					bitmap_memory_data = ~bitmap_memory_data;
 
 				//-----------------------------
@@ -743,76 +512,94 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 				}
 			}
 
-			if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL) && (image_options & DISPLAY_STRING_ON_Y_AXIS))
-			{
-				//------------------------------------------------------------------------
-				//----- MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS -----
-				//------------------------------------------------------------------------
-				//DON'T DISPLAY THE LEADING UNUSED BITS (retain what is already being displayed)
-				if (prop_width_ascii_leading_bits_to_mask)
-				{
-					b_temp = prop_width_ascii_leading_bits_to_mask;
-					if (b_temp > 8)
-						b_temp = 8;
-	
-					b_temp1 = 0x80;
-					for ( ; b_temp > 0; b_temp--)
-					{
-						byte_mask &= ~b_temp1;
-						b_temp1 >>= 1;
-						prop_width_ascii_leading_bits_to_mask--;
-					}
-				}
-
-				//DON'T DISPLAY THE TRAILING UNUSED BITS (retain what is already being displayed)
-				if (prop_width_ascii_trailing_bits_to_mask)
-				{
-
-					//Calculate the number of bits of bitmap data remaining to be displayed in this column
-					w_temp = image_height + y_coord_shift_right_no_of_bits - (y_byte_number << 3);
-					
-					if (
-						((w_temp - prop_width_ascii_trailing_bits_to_mask) < 8) &&
-						(prop_width_ascii_trailing_bits_to_mask)
-						)
-					{
-						//WE NEED TO MASK BITS FROM THIS BYTE
-						b_temp = (8 - (w_temp - prop_width_ascii_trailing_bits_to_mask));
-						prop_width_ascii_trailing_bits_to_mask -= b_temp;
-
-						b_temp1 = 0xff;
-						for ( ; b_temp > 0; b_temp--)			//(We have to do a for loop as a b_temp value of 8 results in no shifting with the C18 compiler)
-							b_temp1 <<= 1;
-
-						byte_mask &= b_temp1;
-					}
-
-
-				}
-			}
+//			#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+//				if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL))
+//				{
+//					//------------------------------------------------------------------------
+//					//----- MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS -----
+//					//------------------------------------------------------------------------
+//					//DON'T DISPLAY THE LEADING UNUSED BITS (retain what is already being displayed)
+//					if (prop_width_ascii_leading_bits_to_mask)
+//					{
+//						b_temp = prop_width_ascii_leading_bits_to_mask;
+//						if (b_temp > 8)
+//							b_temp = 8;
+//		
+//						b_temp1 = 0x80;
+//						for ( ; b_temp > 0; b_temp--)
+//						{
+//							byte_mask &= ~b_temp1;
+//							b_temp1 >>= 1;
+//							prop_width_ascii_leading_bits_to_mask--;
+//						}
+//					}
+//	
+//					//DON'T DISPLAY THE TRAILING UNUSED BITS (retain what is already being displayed)
+//					if (prop_width_ascii_trailing_bits_to_mask)
+//					{
+//	
+//						//Calculate the number of bits of bitmap data remaining to be displayed in this column
+//						w_temp = image_height + y_coord_shift_right_no_of_bits - (y_byte_number << 3);
+//						
+//						if (
+//							((w_temp - prop_width_ascii_trailing_bits_to_mask) < 8) &&
+//							(prop_width_ascii_trailing_bits_to_mask)
+//							)
+//						{
+//							//WE NEED TO MASK BITS FROM THIS BYTE
+//							b_temp = (8 - (w_temp - prop_width_ascii_trailing_bits_to_mask));
+//							prop_width_ascii_trailing_bits_to_mask -= b_temp;
+//	
+//							b_temp1 = 0xff;
+//							for ( ; b_temp > 0; b_temp--)			//(We have to do a for loop as a b_temp value of 8 results in no shifting with the C18 compiler)
+//								b_temp1 <<= 1;
+//	
+//							byte_mask &= b_temp1;
+//						}
+//	
+//	
+//					}
+//				}
+//			#endif
 
 			//-----------------------------------------
 			//----- WRITE THE BYTE TO THE DISPLAY -----
 			//-----------------------------------------
-			if ((image_options & 0x0c00) == 0)  //Don't output if option bits 11 or 10 are set
-			{
-				if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL) && (image_options & DISPLAY_STRING_ON_Y_AXIS))
-				{
-					//----- MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS -----
-					//(Deal with possible negative y coord values due to the first bits of a start of line character being off the screen)
-					display_write_bitmap_byte(byte_mask, bitmap_memory_data, x_byte_coordinate,
-					(
-					((y_start_coord - prop_width_ascii_first_used_row)
-					+ (y_byte_number << 3))
-					>> 3)
-					);
-				}
-				else
-				{
-					//----- NORMAL DISPLAY -----
-					display_write_bitmap_byte(byte_mask, bitmap_memory_data, x_byte_coordinate, ((y_start_coord >> 3) + y_byte_number));
-				}
-			}
+//			#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+//				if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL))
+//				{
+//					//----- MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS -----
+//					//(Deal with possible negative y coord values due to the first bits of a start of line character being off the screen)
+//					display_write_bitmap_byte(display_bitmap_flags, byte_mask, bitmap_memory_data, x_byte_coordinate,
+//					(
+//					((y_start_coord - prop_width_ascii_first_used_row)
+//					+ (y_byte_number << 3))
+//					>> 3)
+//					);
+//				}
+//				else
+//				{
+//					//----- NORMAL DISPLAY -----
+//	
+//					#ifdef DOING_BITFONTCREATORPRO
+//						if (image_options & 0x0001)
+//						{
+//							//BitFontCreatorPro inverts text rows compared to us (fiers
+//							display_write_bitmap_byte(display_bitmap_flags, byte_mask, bitmap_memory_data, (x_start_coord - (x_byte_coordinate - x_start_coord)), ((y_start_coord >> 3) + y_byte_number));	//(x_start_coord - (x_byte_coordinate - x_start_coord)) is just how we reverse the orientation of the x_byte_coordinate for loop incrementing
+//						}
+//						else
+//						{
+//							display_write_bitmap_byte(display_bitmap_flags, byte_mask, bitmap_memory_data, x_byte_coordinate, ((y_start_coord >> 3) + y_byte_number));
+//						}	
+//					#else
+//						display_write_bitmap_byte(display_bitmap_flags, byte_mask, bitmap_memory_data, x_byte_coordinate, ((y_start_coord >> 3) + y_byte_number));
+//					#endif
+//				}
+//			#else
+				//----- NORMAL DISPLAY -----
+				display_write_bitmap_byte(display_bitmap_flags, byte_mask, bitmap_memory_data, x_byte_coordinate, ((y_start_coord >> 3) + y_byte_number));
+//			#endif
+
 
 
 			//-------------------------------------------------
@@ -820,8 +607,16 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 			//-------------------------------------------------
 			y_bits_to_shift_into_next_byte = y_bits_into_next_byte_working;
 
+		} //for (y_byte_number = 0; y_byte_number < y_no_of_bytes_to_write_per_column; y_byte_number++)
+		
+		if ((image_options & DISPLAY_BITMAP_TYPE_BIT_MASK) == DISPLAY_FONT_CHARACTER)
+		{	
+			//----- FONT CHARACTERS ARE STORED BACKWARDS COMPARED TO BITMAPS SO COMPENSATE -----
+			p_image_memory_address -= (y_no_of_bytes_to_read_per_column << 1);			//Move to start of previous row
 		}
-	}
+
+
+	} //for (x_byte_coordinate = x_start_coord; (x_byte_coordinate - x_start_coord) < image_width; x_byte_coordinate++)
 
 	//------------------------------------------
 	//----- FINISHED DISPLAYING THE BITMAP -----
@@ -832,35 +627,43 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 
 	#ifdef INVERT_Y_AXIS_COORDINATES
 		//----- Y AXIS COORDINATE IS REVERSED -----
-		if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL) && (image_options & DISPLAY_STRING_ON_Y_AXIS))
-		{
-			//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
-			y_start_coord -= (image_height - (prop_width_ascii_last_used_row - prop_width_ascii_first_used_row));
-
-			display_auto_y_coordinate = y_start_coord;
-
-			//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
-			display_auto_y_coordinate += ((image_height - prop_width_ascii_last_used_row) - 1);
-			display_auto_y_coordinate += prop_width_ascii_first_used_row;
-		}
-		else
-		{
+//		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+//			if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL))
+//			{
+//				//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
+//				y_start_coord -= (image_height - (prop_width_ascii_last_used_row - prop_width_ascii_first_used_row));
+//	
+//				display_auto_y_coordinate = y_start_coord;
+//	
+//				//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
+//				display_auto_y_coordinate += ((image_height - prop_width_ascii_last_used_row) - 1);
+//				display_auto_y_coordinate += prop_width_ascii_first_used_row;
+//			}
+//			else
+//			{
+//				display_auto_y_coordinate = y_start_coord - 1;
+//			}
+//		#else
 			display_auto_y_coordinate = y_start_coord - 1;
-		}
+//		#endif
 	#else
 		//----- Y AXIS COORDINATE IS NORMAL -----
 		display_auto_y_coordinate = y_start_coord + image_height;
 	
-		if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL) && (image_options & DISPLAY_STRING_ON_Y_AXIS))
-		{
-			//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
-			display_auto_y_coordinate -= ((image_height - prop_width_ascii_last_used_row) - 1);
-			display_auto_y_coordinate -= prop_width_ascii_first_used_row;
-		}
+//		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+//			if ((image_options & 0x007f) && (image_options & DISPLAY_STRING_PROPORTIONAL))
+//			{
+//				//MODIFY FOR PROPORTIONAL WIDTH TEXT BEING DISPLAYED ON Y AXIS
+//				display_auto_y_coordinate -= ((image_height - prop_width_ascii_last_used_row) - 1);
+//				display_auto_y_coordinate -= prop_width_ascii_first_used_row;
+//			}
+//		#endif
 	#endif
 
 
 }
+
+
 
 
 
@@ -872,18 +675,15 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 //********** DISPLAY ASCII STRING  **********
 //*******************************************
 //*******************************************
+//*p_font_function			Pointer to the get_font_ function for the font to be used
 //
-//image_flash_address			Start address of bitmap in flash memory (set to 0 if bitmap is in program memory))
-//*image_memory_address			Pointer to bitmap in program memory (set to 0 if bitmap is in flash memory)
+//image_options
+//					Bit 15		1 = Invert pixels (i.e. a pixel on becomes off and vice versa)
+//					Bit 14:5	Unused
+//					Bit 4:3		String options:- 0x00 = align left, 0x01 = align centre, 0x02 = align right, 0x03 = scrolling
+//					Bit 2:0		Reserved
 //
-//image_options		Bits15:12	Unused
-//					Bit11		Right Align
-//					Bit10		Centre Align
-//					Bit9		0 = Monospace / fixed pitch characters, 1 = proportionally spaced characters
-//					Bit8		0 = Display string along X axis, 1 = Display string along Y axis
-//					Bit7		1 = Invert pixels (i.e. a pixel on becomes off and vice versa)
-//					Bits6:0		Not available (used by display bitmap function)
-//
+//minimum_width				If the width of the text is less than this value whitespace will be added as requried to meet the minimum width
 //x_start_coord = 0 to DISPLAY_WIDTH_PIXELS.	(If = 0xffff then the 'display_auto_x_coordinate' variable is used for the bitmap x coordiante.  This
 //												variable is updated with the next x	coordinate each time this routine is called to allow successive
 //												display across a screen).
@@ -899,135 +699,174 @@ void display_bitmap (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_ad
 //----- VERSION FOR CONSTANT STRINGS -----
 //----------------------------------------
 //----------------------------------------
-void display_const_string (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options, 
+//Returns total length (pixels) of string displayed
+WORD display_const_string (CONSTANT BYTE *(*p_font_function)(WORD character), WORD image_options, WORD minimum_width,
 							   WORD x_start_coord, WORD y_start_coord, CONSTANT BYTE *p_ascii_string)
 {
-	BYTE next_character;
+	WORD next_character;
 	CONSTANT BYTE *p_ascii_string_copy;
-	BYTE doing_leading_blank_bar = 1;
-	
+	WORD string_width;
+	CONSTANT BYTE *p_character_data;
+	WORD total_width = 0;
+	WORD gap_image_options;
+	WORD leading_pad_width = 0;
+
+	#ifdef INVERT_USER_X_Y_COORDS
+		WORD w_temp;
+		w_temp = x_start_coord;
+		x_start_coord = y_start_coord;
+		y_start_coord = w_temp;
+	#endif
+
 	p_ascii_string_copy = p_ascii_string;
 
-	if (image_options & DISPLAY_STRING_SCROLL)
+	if ((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_STRING_SCROLL)
 	{
-		//----- DISPLAYING SCROLLING TEXT - FORCE TO PROPORTAIONAL AND LEFT ALIGNED -----
-		image_options &= ~(DISPLAY_STRING_CENTER_ALIGN | DISPLAY_STRING_RIGHT_ALIGN);
-		image_options |= DISPLAY_STRING_PROPORTIONAL;
+		//-------------------------------------
+		//----- DISPLAYING SCROLLING TEXT -----
+		//-------------------------------------
 		display_scroll_text_skip_pixels_count = display_scroll_text_start_pixel;		//Setup for new scrolling text display
 		display_scroll_1st_char_done_skip_pixels = 0;
 	}
 
 
-display_const_string_loop:
-	//----- GET THE FIRST CHARACTER AND DISPLAY IT -----
-	if ((image_options & DISPLAY_STRING_SCROLL) == 0)			//Don't do for scrolling text as we want a leading space
+	if (
+	((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_ALIGN_CENTRE) ||
+	((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_ALIGN_RIGHT)
+	)
 	{
-		next_character = *p_ascii_string++;
-		if (next_character <= 0x00)			//Check for null terminator
-			return;
-
-		display_bitmap(image_flash_address, p_image_memory_address, (image_options | next_character), x_start_coord, y_start_coord);
-	}
-	else
-	{
-		display_auto_x_coordinate = x_start_coord;
-		display_auto_y_coordinate = y_start_coord;
-	}
-
-	while (1)
-	{
-
-		//----- GET THE NEXT CHARACTER -----
-		next_character = *p_ascii_string++;
-		if (next_character <= 0x00)
-			break;
-
-		//----- DO SPECIAL BLANK BAR CHARACTER BETWEEN EACH ACTUAL CHARACTER ----
-		//(Don't do for proportaion width text 'space' character as it looks better without)
-		if (((image_options & DISPLAY_STRING_PROPORTIONAL) == 0) || (next_character != ' '))
+		//----------------------------------------------
+		//----- DISPLAYING CENTRE OR RIGHT ALIGNED -----
+		//----------------------------------------------
+		
+		//GET TOTAL STRING WIDTH
+		string_width = 0;
+		next_character = (WORD)*p_ascii_string++;
+		while (next_character > 0x00)			//Do until null terminator
 		{
-			if (image_options & DISPLAY_STRING_ON_Y_AXIS)
-			{
-				display_bitmap(image_flash_address, p_image_memory_address,
-									((image_options & DISPLAY_STRING_ON_Y_AXIS) | (image_options ^ DISPLAY_STRING_INVERT_PIXELS_ON) | DISPLAY_STRING_PROPORTIONAL | 0x7f),
-									x_start_coord, 0xffff);
-			}
-			else
-			{
-				display_bitmap(image_flash_address, p_image_memory_address,
-									((image_options & DISPLAY_STRING_ON_Y_AXIS) | (image_options ^ DISPLAY_STRING_INVERT_PIXELS_ON) | DISPLAY_STRING_PROPORTIONAL | 0x7f),
-									0xffff, y_start_coord);
-			}
+			p_font_function(next_character);
+			string_width += display_bitmap_width + display_font_spacing;
 			
-			//Avoid the leading blank bar being off screen affecting the remove first scrolling character flag to the main function
-			if (doing_leading_blank_bar && display_scroll_1st_char_done_skip_pixels)
-				display_scroll_1st_char_done_skip_pixels = 0;
+			next_character = *p_ascii_string++;
 		}
-		doing_leading_blank_bar = 0;
-
-		//----- DISPLAY CHARACTER -----
-		if (image_options & DISPLAY_STRING_ON_Y_AXIS)
-			display_bitmap(image_flash_address, p_image_memory_address, (image_options | next_character), x_start_coord, 0xffff);
-		else
-			display_bitmap(image_flash_address, p_image_memory_address, (image_options | next_character), 0xffff, y_start_coord);
-
-
-		if ((image_options & DISPLAY_STRING_SCROLL) && (display_scroll_text_display_pixels_count == 0))
+		string_width -= display_font_spacing;		//Remove the final inter character gap that won't be displayed
+		
+		if ((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_ALIGN_CENTRE)
 		{
-			//DISPLAYING SCROLLING TEXT - ALREADY DISPLAYED ALL OF THE PIXELS TO INCUDE TO NO NEED TO CONTINUE
+			//Centre alignment selected so ensure we always have an even value for this so the start coord will always be the same for a given width
+			if (string_width & 0x01)
+				string_width++;
+		}
+		
+		//CALCULATE ANY LEADING PAD WHITESPACE REQUIRED
+		if (string_width < minimum_width)
+			leading_pad_width = (minimum_width - string_width);
+		
+		//ADJUST START POSITION TO PROVIDE THE ALIGNMENT
+		if ((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_ALIGN_CENTRE)
+		{
+			string_width >>= 1;
+			leading_pad_width >>= 1;
+		}
+		else
+		{
+			string_width--;		//For right aligned decrement as we want to use the last pixel, not be right aligned just before it
+		}
+
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			#ifdef INVERT_Y_AXIS_COORDINATES
+				y_start_coord += (string_width + leading_pad_width);
+			#else
+				y_start_coord -= (string_width + leading_pad_width);
+			#endif
+		#else
+			x_start_coord -= (string_width + leading_pad_width); 
+		#endif
+
+		p_ascii_string = p_ascii_string_copy;
+	}
+
+	//SETUP FOR DISPLAY
+	display_auto_x_coordinate = x_start_coord;
+	display_auto_y_coordinate = y_start_coord;
+	gap_image_options = 0x4000 | DISPLAY_EMPTY_BLOCK | (image_options & (WORD)DISPLAY_INVERT_PIXELS);
+	
+	
+	//---------------------------------------------------
+	//----- DISPLAY LEADING WHITESPACE IF NECESSARY -----
+	//---------------------------------------------------
+	if (leading_pad_width)
+	{
+		display_bitmap_width = leading_pad_width;
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			display_bitmap(0, 0, gap_image_options, x_start_coord, 0xffff);
+		#else
+			display_bitmap(0, 0, gap_image_options, 0xffff, y_start_coord);
+		#endif
+		total_width += leading_pad_width;
+	}
+	
+	//------------------------------
+	//----- DISPLAY THE STRING -----
+	//------------------------------
+	image_options &= ~((WORD)DISPLAY_BITMAP_TYPE_BIT_MASK);
+	image_options |= DISPLAY_FONT_CHARACTER;
+	
+	next_character = (WORD)*p_ascii_string++;
+	while (next_character > 0x00)			//Do until null terminator
+	{
+		//----- DISPLAY THE NEXT CHARACTER -----
+		p_character_data = p_font_function(next_character);
+		total_width += display_bitmap_width;
+		
+		//DISPLAY CHARACTER
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			display_bitmap(0, p_character_data, (0x4000 | image_options), x_start_coord, 0xffff);
+		#else
+			display_bitmap(0, p_character_data, (0x4000 | image_options), 0xffff, y_start_coord);
+		#endif
+
+		if (
+		((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_STRING_SCROLL) &&
+		(display_scroll_text_display_pixels_count == 0)
+		)
+		{
+			//DISPLAYING SCROLLING TEXT - ALREADY DISPLAYED ALL OF THE PIXELS TO INCUDE SO NO NEED TO CONTINUE
 			break;
 		}
+		
+		next_character = (WORD)*p_ascii_string++;
 
-	}
-
-	if (image_options & 0x0400)
-	{
-		//-------------------------------------
-		//----- DOING CENTER ALIGNED TEXT -----
-		//-------------------------------------
-		//Because the align bit was set the display bitmap fucntion will not have actually outputted the text, but we now know how long the text was on the screen
-		if (image_options & DISPLAY_STRING_ON_Y_AXIS)
+		if (next_character != 0x00)
 		{
-			#ifdef INVERT_Y_AXIS_COORDINATES
-				y_start_coord += (y_start_coord - display_auto_y_coordinate) >> 1;
+			//DISPLAY THE GAP TO NEXT CHARACTER
+			display_bitmap_width = display_font_spacing;
+			total_width += display_font_spacing;
+			#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+				display_bitmap(0, 0, gap_image_options, x_start_coord, 0xffff);
 			#else
-				y_start_coord -= (display_auto_y_coordinate - y_start_coord) >> 1;
+				display_bitmap(0, 0, gap_image_options, 0xffff, y_start_coord);
 			#endif
 		}
-		else
-		{
-			x_start_coord -= (display_auto_x_coordinate - x_start_coord) >> 1; 
-		}
 
-		p_ascii_string = p_ascii_string_copy;
-		image_options &= 0xf3ff;				//Remove the align bits
-		goto display_const_string_loop;		//Re run this function, this time with the display being updated
-	}
-	else if (image_options & 0x0800)
+	} //while (next_character > 0x00)
+
+	//----------------------------------------------------
+	//----- DISPLAY TRAILING WHITESPACE IF NECESSARY -----
+	//----------------------------------------------------
+	if (total_width < minimum_width)
 	{
-		//-------------------------------------
-		//----- DOING RIGHT ALIGNED TEXT ------
-		//-------------------------------------
-		//Because the align bit was set the display bitmap fucntion will not have actually outputted the text, but we now know how long the text was on the screen
-		if (image_options & DISPLAY_STRING_ON_Y_AXIS)
-		{
-			#ifdef INVERT_Y_AXIS_COORDINATES
-				y_start_coord += (y_start_coord - display_auto_y_coordinate);
-			#else
-				y_start_coord -= (display_auto_y_coordinate - y_start_coord);
-			#endif
-		}
-		else
-		{
-			x_start_coord -= (display_auto_x_coordinate - x_start_coord); 
-		}
-
-		p_ascii_string = p_ascii_string_copy;
-		image_options &= 0xf3ff;				//Remove the align bits
-		goto display_const_string_loop;		//Re run this function, this time with the display being updated
+		display_bitmap_width = minimum_width - total_width;
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			display_bitmap(0, 0, gap_image_options, x_start_coord, 0xffff);
+		#else
+			display_bitmap(0, 0, gap_image_options, 0xffff, y_start_coord);
+		#endif
 	}
 
+	return(total_width);
 }
+
 
 
 //----------------------------------------
@@ -1035,134 +874,176 @@ display_const_string_loop:
 //----- VERSION FOR VARIABLE STRINGS -----
 //----------------------------------------
 //----------------------------------------
-void display_variable_string (DWORD image_flash_address, CONSTANT BYTE *p_image_memory_address, WORD image_options,
-								  WORD x_start_coord, WORD y_start_coord, BYTE *p_ascii_string)
+//Returns total length (pixels) of string displayed
+WORD display_variable_string (CONSTANT BYTE *(*p_font_function)(WORD character), WORD image_options, WORD minimum_width,
+							   WORD x_start_coord, WORD y_start_coord, BYTE *p_ascii_string)
 {
-	BYTE next_character;
+	WORD next_character;
 	BYTE *p_ascii_string_copy;
-	BYTE doing_leading_blank_bar = 1;
-	
+	WORD string_width;
+	CONSTANT BYTE *p_character_data;
+	WORD total_width = 0;
+	WORD gap_image_options;
+	WORD leading_pad_width = 0;
+
+	#ifdef INVERT_USER_X_Y_COORDS
+		WORD w_temp;
+		w_temp = x_start_coord;
+		x_start_coord = y_start_coord;
+		y_start_coord = w_temp;
+	#endif
+
 	p_ascii_string_copy = p_ascii_string;
 
-
-	if (image_options & DISPLAY_STRING_SCROLL)
+	if ((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_STRING_SCROLL)
 	{
-		//----- DISPLAYING SCROLLING TEXT - FORCE TO PROPORTAIONAL AND LEFT ALIGNED -----
-		image_options &= ~(DISPLAY_STRING_CENTER_ALIGN | DISPLAY_STRING_RIGHT_ALIGN);
-		image_options |= DISPLAY_STRING_PROPORTIONAL;
+		//-------------------------------------
+		//----- DISPLAYING SCROLLING TEXT -----
+		//-------------------------------------
 		display_scroll_text_skip_pixels_count = display_scroll_text_start_pixel;		//Setup for new scrolling text display
 		display_scroll_1st_char_done_skip_pixels = 0;
 	}
 
 
-display_variable_string_loop:
-	//----- GET THE FIRST CHARACTER AND DISPLAY IT -----
-	if ((image_options & DISPLAY_STRING_SCROLL) == 0)			//Don't do for scrolling text as we want a leading space
+	if (
+	((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_ALIGN_CENTRE) ||
+	((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_ALIGN_RIGHT)
+	)
 	{
-		next_character = *p_ascii_string++;
-		if (next_character <= 0x00)			//Check for null terminator
-			return;
-
-		display_bitmap(image_flash_address, p_image_memory_address, (image_options | next_character), x_start_coord, y_start_coord);
-	}
-	else
-	{
-		display_auto_x_coordinate = x_start_coord;
-		display_auto_y_coordinate = y_start_coord;
-	}
-
-	while (1)
-	{
-		//----- GET THE NEXT CHARACTER -----
-		next_character = *p_ascii_string++;
-		if (next_character <= 0x00)
-			break;
-
-		//----- DO SPECIAL BLANK BAR CHARACTER BETWEEN EACH ACTUAL CHARACTER ----
-		//(Don't do for proportaion width text 'space' character as it looks better without)
-		if (((image_options & DISPLAY_STRING_PROPORTIONAL) == 0) || (next_character != ' '))
+		//----------------------------------------------
+		//----- DISPLAYING CENTRE OR RIGHT ALIGNED -----
+		//----------------------------------------------
+		
+		//GET TOTAL STRING WIDTH
+		string_width = 0;
+		next_character = (WORD)*p_ascii_string++;
+		while (next_character > 0x00)			//Do until null terminator
 		{
-			if (image_options & DISPLAY_STRING_ON_Y_AXIS)
-			{
-				display_bitmap(image_flash_address, p_image_memory_address,
-									((image_options & DISPLAY_STRING_ON_Y_AXIS) | (image_options ^ DISPLAY_STRING_INVERT_PIXELS_ON) | DISPLAY_STRING_PROPORTIONAL | 0x7f),
-									x_start_coord, 0xffff);
-			}
-			else
-			{
-				display_bitmap(image_flash_address, p_image_memory_address,
-									((image_options & DISPLAY_STRING_ON_Y_AXIS) | (image_options ^ DISPLAY_STRING_INVERT_PIXELS_ON) | DISPLAY_STRING_PROPORTIONAL | 0x7f),
-									0xffff, y_start_coord);
-			}
+			p_font_function(next_character);
+			string_width += display_bitmap_width + display_font_spacing;
 			
-			//Avoid the leading blank bar being off screen affecting the remove first scrolling character flag to the main function
-			if (doing_leading_blank_bar && display_scroll_1st_char_done_skip_pixels)
-				display_scroll_1st_char_done_skip_pixels = 0;
+			next_character = *p_ascii_string++;
 		}
-		doing_leading_blank_bar = 0;
+		string_width -= display_font_spacing;		//Remove the final inter character gap that won't be displayed
 
-		//----- DISPLAY CHARACTER -----
-		if (image_options & DISPLAY_STRING_ON_Y_AXIS)
-			display_bitmap(image_flash_address, p_image_memory_address, (image_options | next_character), x_start_coord, 0xffff);
-		else
-			display_bitmap(image_flash_address, p_image_memory_address, (image_options | next_character), 0xffff, y_start_coord);
-
-		if ((image_options & DISPLAY_STRING_SCROLL) && (display_scroll_text_display_pixels_count == 0))
+		if ((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_ALIGN_CENTRE)
 		{
-			//DISPLAYING SCROLLING TEXT - ALREADY DISPLAYED ALL OF THE PIXELS TO INCUDE TO NO NEED TO CONTINUE
+			//Centre alignment selected so ensure we always have an even value for this so the start coord will always be the same for a given width
+			if (string_width & 0x01)
+				string_width++;
+		}
+
+		//CALCULATE ANY LEADING PAD WHITESPACE REQUIRED
+		if (string_width < minimum_width)
+			leading_pad_width = (minimum_width - string_width);
+		
+		//ADJUST START POSITION TO PROVIDE THE ALIGNMENT
+		if ((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_ALIGN_CENTRE)
+		{
+			string_width >>= 1;
+			leading_pad_width >>= 1;
+		}
+		else
+		{
+			string_width--;		//For right aligned decrement as we want to use the last pixel, not be right aligned just before it
+		}	
+
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			#ifdef INVERT_Y_AXIS_COORDINATES
+				y_start_coord += (string_width + leading_pad_width);
+			#else
+				y_start_coord -= (string_width + leading_pad_width);
+			#endif
+		#else
+			x_start_coord -= (string_width + leading_pad_width);
+		#endif
+		
+		p_ascii_string = p_ascii_string_copy;
+	}	
+
+	//SETUP FOR DISPLAY
+	display_auto_x_coordinate = x_start_coord;
+	display_auto_y_coordinate = y_start_coord;
+	gap_image_options = 0x4000 | DISPLAY_EMPTY_BLOCK | (image_options & (WORD)DISPLAY_INVERT_PIXELS);
+
+
+	//---------------------------------------------------
+	//----- DISPLAY LEADING WHITESPACE IF NECESSARY -----
+	//---------------------------------------------------
+	if (leading_pad_width)
+	{
+		display_bitmap_width = leading_pad_width;
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			display_bitmap(0, 0, gap_image_options, x_start_coord, 0xffff);
+		#else
+			display_bitmap(0, 0, gap_image_options, 0xffff, y_start_coord);
+		#endif
+		total_width += leading_pad_width;
+	}
+
+	//------------------------------
+	//----- DISPLAY THE STRING -----
+	//------------------------------
+	image_options &= ~((WORD)DISPLAY_BITMAP_TYPE_BIT_MASK);
+	image_options |= DISPLAY_FONT_CHARACTER;
+	
+	next_character = (WORD)*p_ascii_string++;
+	while (next_character > 0x00)			//Do until null terminator
+	{
+		//----- DISPLAY THE NEXT CHARACTER -----
+		p_character_data = p_font_function(next_character);
+		total_width += display_bitmap_width;
+		
+		//DISPLAY CHARACTER
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			display_bitmap(0, p_character_data, (0x4000 | image_options), x_start_coord, 0xffff);
+		#else
+			display_bitmap(0, p_character_data, (0x4000 | image_options), 0xffff, y_start_coord);
+		#endif
+
+		if (
+		((image_options & DISPLAY_STRING_OPTION_BIT_MASK) == DISPLAY_STRING_SCROLL) &&
+		(display_scroll_text_display_pixels_count == 0)
+		)
+		{
+			//DISPLAYING SCROLLING TEXT - ALREADY DISPLAYED ALL OF THE PIXELS TO INCUDE SO NO NEED TO CONTINUE
 			break;
 		}
+		
+		next_character = (WORD)*p_ascii_string++;
 
-	}
-
-	if (image_options & 0x0400)
-	{
-		//-------------------------------------
-		//----- DOING CENTER ALIGNED TEXT -----
-		//-------------------------------------
-		//Because the align bit was set the display bitmap fucntion will not have actually outputted the text, but we now know how long the text was on the screen
-		if (image_options & DISPLAY_STRING_ON_Y_AXIS)
+		if (next_character != 0x00)
 		{
-			#ifdef INVERT_Y_AXIS_COORDINATES
-				y_start_coord += (y_start_coord - display_auto_y_coordinate) >> 1;
+			//DISPLAY THE GAP TO NEXT CHARACTER
+			display_bitmap_width = display_font_spacing;
+			total_width += display_font_spacing;
+			#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+				display_bitmap(0, 0, gap_image_options, x_start_coord, 0xffff);
 			#else
-				y_start_coord -= (display_auto_y_coordinate - y_start_coord) >> 1;
+				display_bitmap(0, 0, gap_image_options, 0xffff, y_start_coord);
 			#endif
 		}
-		else
-		{
-			x_start_coord -= (display_auto_x_coordinate - x_start_coord) >> 1; 
-		}
+		
+	} //while (next_character > 0x00)
 
-		p_ascii_string = p_ascii_string_copy;
-		image_options &= 0xf3ff;				//Remove the align bits
-		goto display_variable_string_loop;	//Re run this function, this time with the display being updated
-	}
-	else if (image_options & 0x0800)
+	//----------------------------------------------------
+	//----- DISPLAY TRAILING WHITESPACE IF NECESSARY -----
+	//----------------------------------------------------
+	if (total_width < minimum_width)
 	{
-		//-------------------------------------
-		//----- DOING RIGHT ALIGNED TEXT ------
-		//-------------------------------------
-		//Because the align bit was set the display bitmap fucntion will not have actually outputted the text, but we now know how long the text was on the screen
-		if (image_options & DISPLAY_STRING_ON_Y_AXIS)
-		{
-			#ifdef INVERT_Y_AXIS_COORDINATES
-				y_start_coord += (y_start_coord - display_auto_y_coordinate);
-			#else
-				y_start_coord -= (display_auto_y_coordinate - y_start_coord);
-			#endif
-		}
-		else
-		{
-			x_start_coord -= (display_auto_x_coordinate - x_start_coord); 
-		}
-
-		p_ascii_string = p_ascii_string_copy;
-		image_options &= 0xf3ff;				//Remove the align bits
-		goto display_variable_string_loop;	//Re run this function, this time with the display being updated
+		display_bitmap_width = minimum_width - total_width;
+		#ifdef DISPLAY_STRINGS_ON_Y_AXIS
+			display_bitmap(0, 0, gap_image_options, x_start_coord, 0xffff);
+		#else
+			display_bitmap(0, 0, gap_image_options, 0xffff, y_start_coord);
+		#endif
 	}
-
+	
+	return(total_width);
 }
+
+
+
 
 
 
@@ -1185,7 +1066,7 @@ void display_byte_ordering_test_sequence (BYTE flags)
 
 	//IF MOVING BACKWARDS THEN CLEAR THE LAST BYTE POSITION
 	if (flags & 0x02)
-		display_write_bitmap_byte(0xff, 0x00, byte_ordering_test_last_x_coord, byte_ordering_test_last_y_coord);
+		display_write_bitmap_byte(0, 0xff, 0x00, byte_ordering_test_last_x_coord, byte_ordering_test_last_y_coord);
 
 
 	//MOVE BYTE COUNTER BACKWARDS OR FORWARDS
@@ -1227,16 +1108,10 @@ void display_byte_ordering_test_sequence (BYTE flags)
 	}
 
 	//DISPLAY BYTE POSITION
-	display_write_bitmap_byte(0xff, 0x8f, byte_ordering_test_last_x_coord, byte_ordering_test_last_y_coord);
+	display_write_bitmap_byte(0, 0xff, 0x8f, byte_ordering_test_last_x_coord, byte_ordering_test_last_y_coord);
 
 }
 #endif
-
-
-
-
-
-
 
 
 

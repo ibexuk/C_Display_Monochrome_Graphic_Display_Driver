@@ -25,9 +25,21 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 //Project Name:		MONOCHROME DISPLAY DRIVER
-//SCREEN MODEL C CODE FILE
 
 
+
+#include "main.h"					//Global data type definitions (see https://github.com/ibexuk/C_Generic_Header_File )
+
+
+//****************************************************************************************
+//****************************************************************************************
+//  Project Name:		MONOCHROME DISPLAY DRIVER
+//						SCREEN MODEL C CODE FILE
+//  Copyright:			EMBEDDED-CODE.COM
+//
+//<INSERT LICENCE BLOCK HERE>
+//****************************************************************************************
+//****************************************************************************************
 
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
@@ -232,7 +244,7 @@ void display_write_command (BYTE data);
 //(Also defined below as extern)
 void display_model_initialise(void);
 void display_model_set_contrast(BYTE contrast_value);
-void display_write_bitmap_byte (BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_coord, WORD y_byte_coord);
+void display_write_bitmap_byte (BYTE flags, BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_coord, WORD y_byte_coord);
 
 
 #else
@@ -241,7 +253,7 @@ void display_write_bitmap_byte (BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_
 //------------------------------
 extern void display_model_initialise(void);
 extern void display_model_set_contrast(BYTE contrast_value);
-extern void display_write_bitmap_byte (BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_coord, WORD y_byte_coord);
+extern void display_write_bitmap_byte (BYTE flags, BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_coord, WORD y_byte_coord);
 
 
 #endif

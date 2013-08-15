@@ -25,11 +25,21 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 //Project Name:		MONOCHROME DISPLAY DRIVER
-SCREEN MODEL C CODE FILE
 
 
 
+#include "main.h"					//Global data type definitions (see https://github.com/ibexuk/C_Generic_Header_File )
 
+
+//****************************************************************************************
+//****************************************************************************************
+//  Project Name:		MONOCHROME DISPLAY DRIVER
+//						SCREEN MODEL C CODE FILE
+//  Copyright:			EMBEDDED-CODE.COM
+//
+//<INSERT LICENCE BLOCK HERE>
+//****************************************************************************************
+//****************************************************************************************
 
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
@@ -48,7 +58,7 @@ SCREEN MODEL C CODE FILE
 
 
 //----- INCLUDE FILES FOR THIS SOURCE CODE FILE -----
-#include "main.h"					//Global data type definitions (see https://github.com/ibexuk/C_Generic_Header_File )
+#include "main.h"					//(Include the project global defines file)
 #define	DISPLAY_MODEL_C				//(Define used for following header file to flag that it is the header file for this source file)
 #include "display-model.h"			//(Include header file for this source file)
 #include "display.h"
@@ -140,8 +150,10 @@ void display_model_set_contrast(BYTE contrast_value)
 //********** WRITE BITMAP BYTE **********
 //***************************************
 //***************************************
-//bitmap_mask - bit high = use the bitmap_data value, bit low = use the existing screen value
-void display_write_bitmap_byte (BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_coord, WORD y_byte_coord)
+//bitmap_mask	bit high = use the bitmap_data value, bit low = use the existing screen value
+//flags			Bit 0 high = invert existing pixels (ignore bitmap_data).  Other bits unused.
+//y_byte_coord is the address of the byte that contains the pixel, not the literal y coordinate, as this axis is byte based.
+void display_write_bitmap_byte (BYTE flags, BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_coord, WORD y_byte_coord)
 {
 	BYTE display_working_byte_value;
 	
@@ -183,7 +195,7 @@ void display_write_bitmap_byte (BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_
 		//---------------------------------------------------------------------------
 		//----- NOT USING A LOCAL RAM BUFFER SO READ CURRENT VALUE FROM DISPLAY -----
 		//---------------------------------------------------------------------------
-		if (bitmap_mask == 0xff)
+		if ((bitmap_mask == 0xff) && !(flags & 0x01))
 		{
 			//Mask is all bits to be written so skip the read as its unessary
 			display_working_byte_value = bitmap_data;
@@ -224,6 +236,11 @@ void display_write_bitmap_byte (BYTE bitmap_mask, BYTE bitmap_data, WORD x_byte_
 	//--------------------------
 	//----- APPLY THE MASK -----
 	//--------------------------
+	if (flags & 0x01)
+	{
+		//Invert existing pixels (ignore bitmap_data)
+		bitmap_data = ~display_working_byte_value;
+	}
 	display_working_byte_value &= ~bitmap_mask;
 	display_working_byte_value |= (bitmap_data & bitmap_mask);
 
